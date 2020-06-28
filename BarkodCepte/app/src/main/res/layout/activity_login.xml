@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@drawable/login_bg"
     tools:context=".login">
 
     <LinearLayout
@@ -12,21 +12,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
 
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
-
-        <ImageView
-            android:id="@+id/login_image"
-            android:layout_width="match_parent"
-            android:layout_height="238dp"
-            app:srcCompat="@drawable/login_image" />
 
         <EditText
             android:id="@+id/edt_ID"
@@ -34,7 +29,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Kullanıcı Adı"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textColorHint="#BFFFFFFF" />
 
         <EditText
             android:id="@+id/edt_Pass"
@@ -42,13 +38,15 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Şifre"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:textColorHint="#BFFFFEFE" />
 
         <Button
             android:id="@+id/btn_Login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Giriş" />
+            android:text="Giriş"
+            android:textColor="#2979FF" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
