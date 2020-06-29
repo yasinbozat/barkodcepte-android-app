@@ -58,7 +58,11 @@ public class mainscreen extends AppCompatActivity
     //This class provides methods to play DTMF tones
     private ToneGenerator toneGen1;
     private TextView barcodeText;
+    private TextView barcodeText2;
     private String barcodeData;
+     String yedek;
+     String yedek2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,6 +87,7 @@ public class mainscreen extends AppCompatActivity
         toneGen1 = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
         surfaceView = findViewById(R.id.surface_view);
         barcodeText = findViewById(R.id.barcode_text);
+        barcodeText2 = findViewById(R.id.barcode_text2);
         initialiseDetectorsAndSources();
 
 
@@ -140,33 +145,38 @@ public class mainscreen extends AppCompatActivity
 
             @Override
             public void receiveDetections(Detector.Detections<Barcode> detections) {
-
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 
                 final SparseArray<Barcode> barcodes = detections.getDetectedItems();
                 if (barcodes.size() != 0) {
-
 
                     barcodeText.post(new Runnable() {
 
                         @Override
 
                         public void run() {
-                            Log.d("TAG", barcodes.valueAt(0).displayValue);
+
+
                             if (barcodes.valueAt(0).email != null) {
-                                barcodeText.removeCallbacks(null);
-                                barcodeData += barcodes.valueAt(0).email.address+"\n";
-                                barcodeText.setText(barcodeData);
-                                toneGen1.startTone(ToneGenerator.TONE_CDMA_PIP, 150);
-                            }
-                            else { barcodeData += barcodes.valueAt(0).displayValue+"\n";
-                                barcodeText.setText(barcodeData);
-                                toneGen1.startTone(ToneGenerator.TONE_CDMA_PIP, 150);
+                                    barcodeText.removeCallbacks(null);
+                                    barcodeData += barcodes.valueAt(0).email.address + "\n";
+                                    barcodeText.setText(barcodeData);
+                                    barcodeText.setText(barcodes.valueAt(0).email.address + "\n");
+                                    toneGen1.startTone(ToneGenerator.TONE_CDMA_PIP, 150);
+                                } else {
+                                    barcodeData += barcodes.valueAt(0).displayValue + "\n";
+                                    barcodeText.setText(barcodeData);
+                                    toneGen1.startTone(ToneGenerator.TONE_CDMA_PIP, 150);
                                 }
+                                barcodeText2.setText(barcodes.valueAt(0).displayValue);
 
-                        }
 
+                           }
                     });
-
 
                 }
             }
