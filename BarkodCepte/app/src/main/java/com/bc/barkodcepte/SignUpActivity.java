@@ -2,6 +2,7 @@ package com.bc.barkodcepte;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -45,6 +47,9 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 SignUp();
+                Toast.makeText(getApplicationContext(),"Başarıyla Katıl Oldunuz!",Toast.LENGTH_LONG).show();
+                Intent i = new Intent(SignUpActivity.this,login.class);
+                startActivity(i);
             }
         });
 
@@ -56,11 +61,14 @@ public class SignUpActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        Log.e("err",""+response);
                         
                     }
                 }, new Response.ErrorListener() {
+
             @Override
             public void onErrorResponse(VolleyError error) {
+                Log.e("err",""+error);
 
             }
         }){
@@ -71,8 +79,7 @@ public class SignUpActivity extends AppCompatActivity {
                deger.put("userName", edt_SignUp_Un.getText().toString());
                deger.put("email", edt_SignUp_Email.getText().toString());
                deger.put("pass", edt_SignUp_Pass.getText().toString());
-                Log.d("msj","gitti");
-                return deger;
+               return deger;
             }
         };
 

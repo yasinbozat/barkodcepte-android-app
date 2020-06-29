@@ -10,11 +10,24 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/edt_SignUp_Un"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Kullanıcı Adı"
+            android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/edt_SignUp_Email"
@@ -31,14 +44,6 @@
             android:ems="10"
             android:hint="Şifre"
             android:inputType="textPassword" />
-
-        <EditText
-            android:id="@+id/edt_SignUp_Un"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Kullanıcı Adı"
-            android:inputType="textPersonName" />
 
         <Button
             android:id="@+id/btn_SignUp"

@@ -24,7 +24,7 @@
         tools:ignore="MissingConstraints">
 
         <EditText
-            android:id="@+id/edt_ID"
+            android:id="@+id/edt_Un"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"

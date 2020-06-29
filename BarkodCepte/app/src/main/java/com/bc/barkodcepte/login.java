@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -22,7 +24,10 @@ import java.util.Map;
 
 public class login extends AppCompatActivity {
 
+    private EditText edt_Un, edt_Pass;
     private Button btn_Login, btn_Kaydol;
+    String url = "http://ceptebarkod.tk/giris.php";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +42,8 @@ public class login extends AppCompatActivity {
         //--Değişkenler--//
         btn_Login = findViewById(R.id.btn_Login);
         btn_Kaydol = findViewById(R.id.btn_Kaydol);
+        edt_Un = findViewById(R.id.edt_Un);
+        edt_Pass = findViewById(R.id.edt_Pass);
         //--------------//
 
 
@@ -44,8 +51,9 @@ public class login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(login.this,MainActivity.class);
-                startActivity(i);
+                SignIn();
+
+
 
             }
         });
@@ -59,6 +67,37 @@ public class login extends AppCompatActivity {
             }
         });
 
+
+    }
+    private void SignIn(){
+
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.e("err",""+response);
+
+                    }
+                }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("err",""+error);
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> deger = new HashMap<>();
+
+                deger.put("userName", edt_Un.getText().toString());
+                deger.put("pass", edt_Pass.getText().toString());
+                return deger;
+            }
+        };
+
+        MySingleton.getInstance(getApplicationContext()).addToRequest(stringRequest);
 
     }
 }
