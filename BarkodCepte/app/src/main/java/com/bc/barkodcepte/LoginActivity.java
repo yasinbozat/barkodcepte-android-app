@@ -22,7 +22,7 @@ import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
 import java.util.Map;
 
-public class login extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private EditText edt_Un, edt_Pass;
     private Button btn_Login, btn_Kaydol;
@@ -61,7 +61,7 @@ public class login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(login.this,SignUpActivity.class);
+                Intent i = new Intent(LoginActivity.this,SignUpActivity.class);
                 startActivity(i);
 
             }
@@ -80,7 +80,7 @@ public class login extends AppCompatActivity {
                         int donendeger = Integer.parseInt(response);
                         if(donendeger == 1){
 
-                            Intent i = new Intent(login.this,MainActivity.class);
+                            Intent i = new Intent(LoginActivity.this,MainActivity.class);
                             startActivity(i);
 
                         }else if(donendeger == 0){

@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -48,7 +47,7 @@ public class SignUpActivity extends AppCompatActivity {
             public void onClick(View v) {
                 SignUp();
                 Toast.makeText(getApplicationContext(),"Başarıyla Katıl Oldunuz!",Toast.LENGTH_LONG).show();
-                Intent i = new Intent(SignUpActivity.this,login.class);
+                Intent i = new Intent(SignUpActivity.this, LoginActivity.class);
                 startActivity(i);
             }
         });
