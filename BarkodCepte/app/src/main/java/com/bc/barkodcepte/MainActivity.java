@@ -32,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-               /* Intent i = new Intent(MainActivity.this,MyStoreActivity.class);
-                startActivity(i);*/
+                Intent i = new Intent(MainActivity.this,SellProductActivity.class);
+                startActivity(i);
 
             }
         });
