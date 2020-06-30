@@ -7,7 +7,6 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-
     <string name="urun_fiyat">ÜRÜN FİYAT</string>
     <string name="urun_isim">ÜRÜN İSİM</string>
     <string name="Current_Barcode">Current Barcode</string>
@@ -19,4 +18,13 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+    <string name="myStore">Marketim</string>
+    <string name="sell">Satış</string>
+    <string name="addProduct">Ürün Ekle</string>
+    <string name="viewProduct">Ürün Görüntüle</string>
+    <string name="user_name">Kullanıcı Adı</string>
+    <string name="password">Şifre</string>
+    <string name="email">Email</string>
+    <string name="login">Giriş</string>
+    <string name="sign_up">Kayıt Ol</string>
 </resources>

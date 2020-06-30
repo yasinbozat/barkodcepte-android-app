@@ -2,9 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
     package="com.bc.barkodcepte">
-    
+
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CAMERA" />
+      <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
 
     <application
         android:allowBackup="true"
@@ -13,18 +15,42 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SellProductActivity">
+        android:usesCleartextTraffic="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        
+
+
+
+      
+      <activity android:name=".LoginActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".MainActivity" />
+        <activity android:name=".SignUpActivity"></activity>
+        <activity android:name=".SellProductActivity"></activity>
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MyStoreActivity"></activity>
+        <activity android:name=".ViewProductActivity" />
+        <activity android:name=".AddProductActivity" />
+     
+
+        <uses-library android:name="org.apache.http.legacy" android:required="false" />
+      
         <meta-data
             android:name="com.google.android.gms.vision.DEPENDENCIES"
-            android:value="barcode" />
+            android:value="barcode" 
+         />
+      
+      
     </application>
+  
+    <dist:module dist:instant="true" />
 
 
     <dist:module dist:instant="true" />
