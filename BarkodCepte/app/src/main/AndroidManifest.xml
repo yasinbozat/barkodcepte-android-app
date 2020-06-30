@@ -3,15 +3,15 @@
     xmlns:dist="http://schemas.android.com/apk/distribution"
     package="com.bc.barkodcepte">
 
-    <dist:module dist:instant="true" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".ViewProductActivity"></activity>
+        <activity android:name=".AddProductActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,5 +20,7 @@
             </intent-filter>
         </activity>
     </application>
+
+    <dist:module dist:instant="true" />
 
 </manifest>
