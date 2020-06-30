@@ -26,7 +26,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Kullanıcı Adı"
+            android:hint="@string/user_name"
+            android:importantForAutofill="no"
             android:inputType="textPersonName" />
 
         <EditText
@@ -34,7 +35,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Email"
+            android:hint="@string/email"
+            android:importantForAutofill="no"
             android:inputType="textEmailAddress" />
 
         <EditText
@@ -42,14 +44,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Şifre"
+            android:hint="@string/password"
+            android:importantForAutofill="no"
             android:inputType="textPassword" />
 
         <Button
             android:id="@+id/btn_SignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Kayıt Ol" />
+            android:text="@string/sign_up" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

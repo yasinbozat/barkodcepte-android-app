@@ -27,8 +27,9 @@
             android:id="@+id/edt_Un"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:autofillHints=""
             android:ems="10"
-            android:hint="Kullanıcı Adı"
+            android:hint="@string/user_name"
             android:inputType="textPersonName"
             android:textColorHint="#BFFFFFFF" />
 
@@ -37,22 +38,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Şifre"
+            android:hint="@string/password"
             android:inputType="textPassword"
-            android:textColorHint="#BFFFFEFE" />
+            android:textColorHint="#BFFFFEFE"
+            android:autofillHints="" />
 
         <Button
             android:id="@+id/btn_Login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Giriş"
+            android:text="@string/login"
             android:textColor="#2979FF" />
 
         <Button
             android:id="@+id/btn_Kaydol"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Kayıt Ol"
+            android:text="@string/sign_up"
             android:textColor="#2979FF" />
     </LinearLayout>
 

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Barkod Cepte</string>
+    <string name="user_name">Kullanıcı Adı</string>
+    <string name="password">Şifre</string>
+    <string name="email">Email</string>
+    <string name="login">Giriş</string>
+    <string name="sign_up">Kayıt Ol</string>
 </resources>

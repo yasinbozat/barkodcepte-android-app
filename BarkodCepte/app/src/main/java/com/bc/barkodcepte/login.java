@@ -76,7 +76,18 @@ public class login extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Log.e("err",""+response);
+                        Log.e("resp",""+response);
+                        int donendeger = Integer.parseInt(response);
+                        if(donendeger == 1){
+
+                            Intent i = new Intent(login.this,MainActivity.class);
+                            startActivity(i);
+
+                        }else if(donendeger == 0){
+
+                            Toast.makeText(getApplicationContext(),""+donendeger,Toast.LENGTH_LONG).show();
+
+                        }
 
                     }
                 }, new Response.ErrorListener() {
