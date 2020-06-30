@@ -4,4 +4,9 @@
     <string name="sell">Satış</string>
     <string name="addProduct">Ürün Ekle</string>
     <string name="viewProduct">Ürün Görüntüle</string>
+    <string name="user_name">Kullanıcı Adı</string>
+    <string name="password">Şifre</string>
+    <string name="email">Email</string>
+    <string name="login">Giriş</string>
+    <string name="sign_up">Kayıt Ol</string>
 </resources>
