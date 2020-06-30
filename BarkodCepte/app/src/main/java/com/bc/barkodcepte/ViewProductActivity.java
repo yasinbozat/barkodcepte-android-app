@@ -3,6 +3,7 @@ package com.bc.barkodcepte;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -15,6 +16,11 @@ public class ViewProductActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_product);
+        //FULL SCREEN CODES ------------------------------------------------------------------------
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //------------------------------------------------------------------------------------------
+
         lv_View = findViewById(R.id.lv_View);
         Listele();
 
