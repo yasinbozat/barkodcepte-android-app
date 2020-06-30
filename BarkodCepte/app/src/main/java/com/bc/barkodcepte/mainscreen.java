@@ -2,6 +2,8 @@ package com.bc.barkodcepte;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.media.AudioManager;
 import android.media.ToneGenerator;
 import android.os.Bundle;
@@ -43,10 +45,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.AttributeSet;
 import android.util.Log;
-
 import java.io.IOException;
-import java.util.Timer;
-import java.util.TimerTask;
 
 
 public class mainscreen extends AppCompatActivity
@@ -60,8 +59,8 @@ public class mainscreen extends AppCompatActivity
     private TextView barcodeText;
     private TextView barcodeText2;
     private String barcodeData;
-     String yedek;
-     String yedek2;
+    String barcode_s,borel="8690132181702";
+    TextView urun_isim,urun_fiyat,toplam;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,8 +87,11 @@ public class mainscreen extends AppCompatActivity
         surfaceView = findViewById(R.id.surface_view);
         barcodeText = findViewById(R.id.barcode_text);
         barcodeText2 = findViewById(R.id.barcode_text2);
+        urun_isim =(TextView) findViewById(R.id.urun_isim);
+        urun_fiyat =(TextView) findViewById(R.id.urun_fiyat);
+        toplam = (TextView) findViewById(R.id.toplam);
+        toplam.setText("0");
         initialiseDetectorsAndSources();
-
 
     }
 
@@ -164,16 +166,25 @@ public class mainscreen extends AppCompatActivity
                             if (barcodes.valueAt(0).email != null) {
                                     barcodeText.removeCallbacks(null);
                                     barcodeData += barcodes.valueAt(0).email.address + "\n";
+                                    barcode_s = barcodeData;
                                     barcodeText.setText(barcodeData);
                                     barcodeText.setText(barcodes.valueAt(0).email.address + "\n");
                                     toneGen1.startTone(ToneGenerator.TONE_CDMA_PIP, 150);
                                 } else {
                                     barcodeData += barcodes.valueAt(0).displayValue + "\n";
+                                    barcode_s = barcodes.valueAt(0).displayValue;
                                     barcodeText.setText(barcodeData);
                                     toneGen1.startTone(ToneGenerator.TONE_CDMA_PIP, 150);
+
                                 }
                                 barcodeText2.setText(barcodes.valueAt(0).displayValue);
-
+                            Log.d("borel", barcodes.valueAt(0).displayValue+" "+borel);
+                           /* if (barcode_s.equals(borel))
+                            {
+                                urun_fiyat.setText("3.75");
+                                urun_isim.setText("BOREL");
+                                toplam.setText("00");
+                            }*/
 
                            }
                     });

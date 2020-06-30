@@ -17,8 +17,24 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/barcode_text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/surface_view"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginRight="2dp"
+        android:padding="5dp"
+        android:text="Last Barcode"
+        android:textColor="#FF0000"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
     <ScrollView
-        android:layout_width="match_parent"
+        android:layout_width="217dp"
         android:layout_height="345dp"
         android:layout_below="@+id/surface_view"
         android:layout_marginTop="1dp"
@@ -42,20 +58,82 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/barcode_text2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginEnd="3dp"
-                android:layout_marginRight="3dp"
-                android:padding="5dp"
-                android:text="Last Barcode"
-                android:textColor="#FF0000"
-                android:textSize="18sp"
-                android:textStyle="bold" />
         </RelativeLayout>
     </ScrollView>
+
+    <TextView
+        android:id="@+id/urun_isim_tw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/barcode_text2"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="115dp"
+        android:layout_marginRight="115dp"
+        android:text="@string/urun_isim"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/urun_fiyat_tw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/barcode_text2"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="57dp"
+        android:layout_marginEnd="109dp"
+        android:layout_marginRight="109dp"
+        android:text="@string/urun_fiyat"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/toplam_tw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/barcode_text2"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="182dp"
+        android:layout_marginEnd="119dp"
+        android:layout_marginRight="119dp"
+        android:text="@string/toplam"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/urun_isim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/barcode_text2"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginRight="26dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/urun_fiyat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/barcode_text2"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="59dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/toplam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/barcode_text2"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="183dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginRight="27dp"
+        android:textStyle="bold" />
 
 </RelativeLayout>
