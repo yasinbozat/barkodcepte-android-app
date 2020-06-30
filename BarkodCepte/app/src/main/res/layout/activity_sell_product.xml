@@ -4,34 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3F51B5"
-    tools:context=".MainActivity">
-
-    <SurfaceView
-        android:id="@+id/surface_view"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginTop="84dp"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/barcode_text2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/surface_view"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginRight="2dp"
-        android:padding="5dp"
-        android:text="Last Barcode"
-        android:textColor="#FF0000"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+    android:background="#FFFFFF"
+    tools:context=".SellProductActivity">
 
     <ScrollView
         android:layout_width="217dp"
@@ -60,6 +34,32 @@
 
         </RelativeLayout>
     </ScrollView>
+
+    <SurfaceView
+        android:id="@+id/surface_view"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="84dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/barcode_text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/surface_view"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginRight="2dp"
+        android:padding="5dp"
+        android:text="Last Barcode"
+        android:textColor="#FF0000"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/urun_isim_tw"

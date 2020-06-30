@@ -2,11 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
     package="com.bc.barkodcepte">
-
-    <uses-permission android:name="android.permission.CAMERA" />
+    
     <uses-permission android:name="android.permission.INTERNET" />
-
-    <dist:module dist:instant="true" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -15,13 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <meta-data
-            android:name="com.google.android.gms.vision.DEPENDENCIES"
-            android:value="barcode" />
-        <activity
-            android:name=".mainscreen"
-            android:label="@string/title_activity_mainscreen"
-            android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".SellProductActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,6 +21,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
+        <meta-data
+            android:name="com.google.android.gms.vision.DEPENDENCIES"
+            android:value="barcode" />
     </application>
+
+
+    <dist:module dist:instant="true" />
 
 </manifest>
