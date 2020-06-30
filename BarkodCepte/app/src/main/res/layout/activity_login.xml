@@ -30,8 +30,8 @@
             android:autofillHints=""
             android:ems="10"
             android:hint="@string/user_name"
-            android:inputType="textPersonName"
-            android:textColorHint="#BFFFFFFF" />
+            android:inputType="text"
+            android:textColorHint="#99FFFFFF" />
 
         <EditText
             android:id="@+id/edt_Pass"
