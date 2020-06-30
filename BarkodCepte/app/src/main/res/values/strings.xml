@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Barkod Cepte</string>
+    <string name="myStore">Marketim</string>
+    <string name="sell">Satış</string>
+    <string name="addProduct">Ürün Ekle</string>
+    <string name="viewProduct">Ürün Görüntüle</string>
 </resources>

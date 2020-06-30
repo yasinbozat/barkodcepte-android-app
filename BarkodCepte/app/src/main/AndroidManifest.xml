@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".ViewProductActivity"></activity>
+        <activity android:name=".MyStoreActivity"></activity>
+        <activity android:name=".ViewProductActivity" />
         <activity android:name=".AddProductActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
