@@ -24,6 +24,7 @@ public class Database extends SQLiteOpenHelper {
     private static final String ROW_BARKOD = "barkod";
     private static final String ROW_URUNADI = "urunAdi";
     private static final String ROW_FIYAT = "urunFiyat";
+    private static final String ROW_STOK = "urunStok";
     //----------------------------------------------------------------------------------------------
 
     public Database(Context context) {
@@ -37,7 +38,8 @@ public class Database extends SQLiteOpenHelper {
                 + ROW_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + ROW_BARKOD + " TEXT NOT NULL,"
                 + ROW_URUNADI + " TEXT NOT NULL,"
-                + ROW_FIYAT + " TEXT NOT NULL)"
+                + ROW_FIYAT + " TEXT NOT NULL,"
+                + ROW_STOK + " INTEGER NOT NULL)"
         );
         Log.d("DEBUG", "Veritabanı oluşturuldu!");
 
@@ -49,7 +51,7 @@ public class Database extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void InsertData(String urunBarkod, String urunAdi, String fiyat) {
+    public void InsertData(String urunBarkod, String urunAdi, String fiyat,String stok) {
         SQLiteDatabase db = this.getWritableDatabase();
         try {
 
@@ -58,6 +60,7 @@ public class Database extends SQLiteOpenHelper {
             cv.put(ROW_BARKOD, urunBarkod);
             cv.put(ROW_URUNADI, urunAdi);
             cv.put(ROW_FIYAT, fiyat);
+            cv.put(ROW_STOK, stok);
 
 
             db.insert(TABLE_URUNLER, null, cv);
@@ -83,7 +86,7 @@ public class Database extends SQLiteOpenHelper {
         List<String> data = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
         try {
-            String[] columns = {ROW_ID, ROW_BARKOD, ROW_URUNADI, ROW_FIYAT};
+            String[] columns = {ROW_ID, ROW_BARKOD, ROW_URUNADI, ROW_FIYAT, ROW_STOK};
             Cursor cursor = db.query(TABLE_URUNLER, columns, null, null, null, null, null);
             while (cursor.moveToNext()) {
                 data.add(cursor.getInt(0)
@@ -92,7 +95,9 @@ public class Database extends SQLiteOpenHelper {
                         + "   -   "
                         + cursor.getString(2)
                         + "   -   "
-                        + cursor.getString(3));
+                        + cursor.getString(3)
+                        + "   -   "
+                        + cursor.getInt(4));
             }
         } catch (Exception e) {
         }

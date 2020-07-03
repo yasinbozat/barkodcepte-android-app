@@ -21,6 +21,8 @@
     <string name="myStore">Marketim</string>
     <string name="sell">Satış</string>
     <string name="addProduct">Ürün Ekle</string>
+    <string name="addStock">Stok Ekle</string>
+    <string name="stockFollow">Stok Takip</string>
     <string name="viewProduct">Ürün Görüntüle</string>
     <string name="user_name">Kullanıcı Adı</string>
     <string name="password">Şifre</string>

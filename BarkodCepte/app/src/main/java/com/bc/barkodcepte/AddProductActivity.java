@@ -12,7 +12,7 @@ import android.widget.EditText;
 public class AddProductActivity extends AppCompatActivity {
 
     private Button btn_AddProduct;
-    private EditText edt_ProductBardcode, edt_ProductName, edt_ProductPrice;
+    private EditText edt_ProductBardcode, edt_ProductName, edt_ProductPrice,edt_ProductStock;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +27,7 @@ public class AddProductActivity extends AppCompatActivity {
         edt_ProductBardcode = findViewById(R.id.edt_ProductBardcode);
         edt_ProductName = findViewById(R.id.edt_ProductName);
         edt_ProductPrice = findViewById(R.id.edt_ProductPrice);
+        edt_ProductStock = findViewById(R.id.edt_ProductStock);
 
         Database db = new Database(AddProductActivity.this);
 
@@ -38,8 +39,8 @@ public class AddProductActivity extends AppCompatActivity {
                     String productBarcode = edt_ProductBardcode.getText().toString();
                     String productName = edt_ProductName.getText().toString();
                     String productPrice = edt_ProductPrice.getText().toString();
-
-                    db.InsertData(productBarcode, productName, productPrice);
+                    String productStock = edt_ProductStock.getText().toString();
+                    db.InsertData(productBarcode, productName, productPrice, productStock);
                     Log.d("DEBUG","eklendi");
                 }catch (Exception e){
                     Log.d("DEBUG", "aaaaaaaaaa"+String.valueOf(e));
