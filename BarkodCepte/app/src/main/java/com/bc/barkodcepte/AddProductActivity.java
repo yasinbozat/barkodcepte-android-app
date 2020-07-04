@@ -28,7 +28,7 @@ import java.io.IOException;
 public class AddProductActivity extends AppCompatActivity {
 
     private Button btn_AddProduct;
-    private EditText edt_ProductBardcode, edt_ProductName, edt_ProductPrice;
+    private EditText edt_ProductBardcode, edt_ProductName, edt_ProductPrice,edt_ProductStock;
 
     //--Kameradan Barkod Okuma--//
     private SurfaceView surfaceView;
@@ -51,6 +51,7 @@ public class AddProductActivity extends AppCompatActivity {
         edt_ProductBardcode = findViewById(R.id.edt_ProductBardcode);
         edt_ProductName = findViewById(R.id.edt_ProductName);
         edt_ProductPrice = findViewById(R.id.edt_ProductPrice);
+        edt_ProductStock = findViewById(R.id.edt_ProductStock);
 
         //--Kameradan Barkod Okuma--//
         toneGen1 = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
@@ -68,8 +69,10 @@ public class AddProductActivity extends AppCompatActivity {
                     String productName = edt_ProductName.getText().toString();
                     String productPrice = edt_ProductPrice.getText().toString();
 
-                    db.InsertData(productBarcode, productName, productPrice);
-                    Log.d("DEBUG", "Eklendi");
+                    String productStock = edt_ProductStock.getText().toString();
+                    db.InsertData(productBarcode, productName, productPrice, productStock);
+                    Log.d("DEBUG","eklendi");
+
                 }catch (Exception e){
                     Log.d("DEBUG", String.valueOf(e));
                 }

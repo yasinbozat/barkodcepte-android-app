@@ -63,6 +63,14 @@
                 android:textSize="20sp" />
         </LinearLayout>
 
+        <EditText
+            android:id="@+id/edt_ProductStock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Stok Adeti(zorunlu değil)"
+            android:inputType="number|numberDecimal" />
+
         <Button
             android:id="@+id/btn_AddProduct"
             android:layout_width="match_parent"

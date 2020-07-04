@@ -8,10 +8,10 @@
     tools:context=".SellProductActivity">
 
     <ScrollView
-        android:layout_width="217dp"
-        android:layout_height="345dp"
+        android:layout_width="184dp"
+        android:layout_height="432dp"
         android:layout_below="@+id/surface_view"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="-1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,17 +20,14 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/barcode_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="Current Barcode"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+            <ListView
+                android:id="@+id/listview"
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:choiceMode="multipleChoice" />
 
         </RelativeLayout>
     </ScrollView>
@@ -134,5 +131,33 @@
         android:layout_marginEnd="27dp"
         android:layout_marginRight="27dp"
         android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/sil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toplam_tw"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="186dp"
+        android:layout_marginLeft="186dp"
+        android:layout_marginTop="1dp"
+        android:text="sil" />
+
+    <TextView
+        android:id="@+id/barcode_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="33dp"
+        android:layout_marginRight="33dp"
+        android:layout_marginBottom="697dp"
+        android:padding="5dp"
+        android:text="Current Barcode"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="invisible" />
 
 </RelativeLayout>

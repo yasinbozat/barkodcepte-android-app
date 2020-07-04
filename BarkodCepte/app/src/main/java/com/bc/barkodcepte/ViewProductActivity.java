@@ -26,7 +26,7 @@ public class ViewProductActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         //------------------------------------------------------------------------------------------
 
-        lv_View = findViewById(R.id.lv_View);
+        lv_View = findViewById(R.id.lv_View_stock_follow);
         Listele();
 
         lv_View.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
