@@ -23,19 +23,25 @@
       
       <activity android:name=".LoginActivity">
 
-            <intent-filter>
+           <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity">
+
+
+        </activity>
         <activity android:name=".SignUpActivity"></activity>
         <activity android:name=".SellProductActivity"></activity>
         <activity android:name=".MyStoreActivity"></activity>
         <activity android:name=".ViewProductActivity" />
-        <activity android:name=".AddProductActivity" />
+
+        <activity android:name=".AddProductActivity">
+
+        </activity>
      
 
         <uses-library android:name="org.apache.http.legacy" android:required="false" />

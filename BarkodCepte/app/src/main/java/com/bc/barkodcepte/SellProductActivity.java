@@ -31,7 +31,7 @@ public class SellProductActivity extends AppCompatActivity {
     private ToneGenerator toneGen1;
     private TextView barcodeText;
     private TextView barcodeText2;
-    private String barcodeData;
+    private String barcodeData = "";
     String barcode_s;
     TextView urun_isim,urun_fiyat,toplam;
     //--Değişkenler--//
@@ -163,6 +163,7 @@ public class SellProductActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
         initialiseDetectorsAndSources();
     }
 }
