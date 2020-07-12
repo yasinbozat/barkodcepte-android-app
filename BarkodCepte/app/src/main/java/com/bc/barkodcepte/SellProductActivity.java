@@ -51,7 +51,7 @@ public class SellProductActivity extends AppCompatActivity {
     ListView lv;
     ArrayAdapter<String > adapter;
     ArrayAdapter<String > adapter_toplam;
-    Button sil;
+    Button sil,bitti;
     double urun_toplam;
 
     @Override
@@ -69,6 +69,7 @@ public class SellProductActivity extends AppCompatActivity {
         toplam = (TextView) findViewById(R.id.toplam);
         lv = findViewById(R.id.listview);
         sil = findViewById(R.id.sil);
+        bitti = findViewById(R.id.bitti);
         toplam.setText("0");
         final ArrayList<String> list = new ArrayList<String>();
         final ArrayList<String> list2 = new ArrayList<String>();
@@ -102,9 +103,32 @@ double set_toplam = 0;
                 urun_toplam = set_toplam;
                 toplam.setText(urun_toplam+"");
                 positioncheck.clear();
-
                 adapter.notifyDataSetChanged();
                 adapter_toplam.notifyDataSetChanged();
+            }
+        });
+        bitti.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               // UPDATE personel SET prim=prim+50
+                        String urunadi = null;
+                        for (int i = 0;i<adapter.getCount();i++) {
+                            urunadi = adapter.getItem(i);
+                            try {
+                                Database d = new Database(SellProductActivity.this);
+                                SQLiteDatabase db = d.getReadableDatabase();
+                                String esittir = "=";
+
+                                String sorgu1 = "UPDATE urunler SET urunStok" + esittir + "urunStok-1" + " WHERE urunAdi" + esittir + "'" + urunadi + "'";
+                                db.execSQL(sorgu1);
+                                Toast.makeText(getApplicationContext(), "STOK GÜNCELLENDİ", Toast.LENGTH_SHORT).show();
+
+
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                                Toast.makeText(getApplicationContext(), "BİR SORUN OLUŞTU", Toast.LENGTH_SHORT).show();
+                            }
+                        }
             }
         });
 
