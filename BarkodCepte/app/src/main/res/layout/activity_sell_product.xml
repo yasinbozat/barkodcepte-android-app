@@ -5,144 +5,191 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
+    android:visibility="visible"
     tools:context=".SellProductActivity">
 
-    <ScrollView
-        android:layout_width="184dp"
-        android:layout_height="432dp"
-        android:layout_below="@+id/surface_view"
-        android:layout_marginTop="-1dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/surface_view"
-        app:layout_constraintVertical_bias="0.0">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#222831"
+        android:orientation="vertical">
 
-        <RelativeLayout
+        <SurfaceView
+            android:id="@+id/surface_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="200dp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:paddingLeft="97dp"
+            android:paddingTop="10dp"
+            android:text="SON EKLENEN ÜRÜN BİLGİSİ"
+            android:textColor="#f2a365" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/barkod"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/barkod"
+                    android:textColor="#c1a57b"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/urun_isim_tw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/urun_isim"
+                    android:textColor="#c1a57b"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/urun_fiyat_tw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/urun_fiyat"
+                    android:textColor="#c1a57b"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="vertical"
+                android:paddingLeft="20dp">
+
+                <TextView
+                    android:id="@+id/barcode_text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="2dp"
+                    android:textColor="#ececec"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/urun_isim"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#ECECEC"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/urun_fiyat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#ECECEC"
+                    android:textStyle="normal" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="#ececec"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/surface_view"
+            app:layout_constraintVertical_bias="0.0">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ListView
+                    android:id="@+id/listview"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:choiceMode="multipleChoice" />
+            </RelativeLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
             android:orientation="vertical">
 
-            <ListView
-                android:id="@+id/listview"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="500dp"
-                android:choiceMode="multipleChoice" />
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-        </RelativeLayout>
-    </ScrollView>
+                <TextView
+                    android:id="@+id/toplam_tw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/toplam"
+                    android:textColor="#f2a365"
+                    android:textStyle="bold" />
 
-    <SurfaceView
-        android:id="@+id/surface_view"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/toplam"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="#ECECEC"
+                    android:textStyle="normal" />
+            </LinearLayout>
 
-    <TextView
-        android:id="@+id/barcode_text2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/surface_view"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginRight="2dp"
-        android:padding="5dp"
-        android:text="Last Barcode"
-        android:textColor="#FF0000"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        </LinearLayout>
 
-    <TextView
-        android:id="@+id/urun_isim_tw"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/barcode_text2"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="115dp"
-        android:layout_marginRight="115dp"
-        android:text="@string/urun_isim"
-        android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/urun_fiyat_tw"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/barcode_text2"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="57dp"
-        android:layout_marginEnd="109dp"
-        android:layout_marginRight="109dp"
-        android:text="@string/urun_fiyat"
-        android:textStyle="bold" />
+            <Button
+                android:id="@+id/sil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="sil" />
 
-    <TextView
-        android:id="@+id/toplam_tw"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/barcode_text2"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="182dp"
-        android:layout_marginEnd="119dp"
-        android:layout_marginRight="119dp"
-        android:text="@string/toplam"
-        android:textStyle="bold" />
+            <Button
+                android:id="@+id/bitti"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="BİTTİ" />
 
-    <TextView
-        android:id="@+id/urun_isim"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/barcode_text2"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="26dp"
-        android:layout_marginRight="26dp"
-        android:textStyle="bold" />
+        </LinearLayout>
 
-    <TextView
-        android:id="@+id/urun_fiyat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/barcode_text2"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="59dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginRight="25dp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/toplam"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/barcode_text2"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="183dp"
-        android:layout_marginEnd="27dp"
-        android:layout_marginRight="27dp"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/sil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/toplam_tw"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginStart="186dp"
-        android:layout_marginLeft="186dp"
-        android:layout_marginTop="1dp"
-        android:text="sil" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/barcode_text"
@@ -159,17 +206,5 @@
         android:textSize="18sp"
         android:textStyle="bold"
         android:visibility="invisible" />
-
-    <Button
-        android:id="@+id/bitti"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/sil"
-        android:layout_marginStart="3dp"
-        android:layout_marginLeft="3dp"
-        android:layout_marginTop="-48dp"
-        android:layout_toEndOf="@+id/sil"
-        android:layout_toRightOf="@+id/sil"
-        android:text="BİTTİ" />
 
 </RelativeLayout>

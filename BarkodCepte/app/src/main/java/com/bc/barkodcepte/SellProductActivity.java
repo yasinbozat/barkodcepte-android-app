@@ -17,6 +17,7 @@ import android.util.SparseBooleanArray;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -58,7 +59,10 @@ public class SellProductActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sell_product);
-
+        //FULL SCREEN CODES ------------------------------------------------------------------------
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //------------------------------------------------------------------------------------------
 
         toneGen1 = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
         surfaceView = findViewById(R.id.surface_view);
@@ -121,14 +125,16 @@ double set_toplam = 0;
 
                                 String sorgu1 = "UPDATE urunler SET urunStok" + esittir + "urunStok-1" + " WHERE urunAdi" + esittir + "'" + urunadi + "'";
                                 db.execSQL(sorgu1);
-                                Toast.makeText(getApplicationContext(), "STOK GÜNCELLENDİ", Toast.LENGTH_SHORT).show();
+
 
 
                             } catch (Exception e) {
                                 e.printStackTrace();
-                                Toast.makeText(getApplicationContext(), "BİR SORUN OLUŞTU", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Bir Sorun Oluştu", Toast.LENGTH_SHORT).show();
                             }
+
                         }
+                Toast.makeText(getApplicationContext(), "Satış Başarıyla Gerçekleştirildi", Toast.LENGTH_SHORT).show();
             }
         });
 

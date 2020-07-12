@@ -8,10 +8,11 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="urun_fiyat">ÜRÜN FİYAT</string>
-    <string name="urun_isim">ÜRÜN İSİM</string>
+    <string name="urun_isim">ÜRÜN ADI</string>
     <string name="Current_Barcode">Current Barcode</string>
     <string name="Last_Barcode">Last Barcode</string>
     <string name="toplam">TOPLAM</string>
+    <string name="barkod">BARKOD</string>
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
