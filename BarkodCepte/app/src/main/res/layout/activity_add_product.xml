@@ -19,6 +19,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <SurfaceView
+            android:id="@+id/surface_addProduct"
+            android:layout_width="389dp"
+            android:layout_height="214dp" />
+
         <EditText
             android:id="@+id/edt_ProductBardcode"
             android:layout_width="match_parent"
