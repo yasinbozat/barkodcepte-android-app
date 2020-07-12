@@ -11,7 +11,8 @@
     <string name="urun_isim">ÜRÜN ADI</string>
     <string name="Current_Barcode">Current Barcode</string>
     <string name="Last_Barcode">Last Barcode</string>
-    <string name="toplam">TOPLAM</string>
+    <string name="toplam">TOPLAM :</string>
+    <string name="tl">TL</string>
     <string name="barkod">BARKOD</string>
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
@@ -24,7 +25,8 @@
     <string name="addProduct">Ürün Ekle</string>
     <string name="addStock">Stok Ekle</string>
     <string name="stockFollow">Stok Takip</string>
-    <string name="viewProduct">Ürün Görüntüle</string>
+    <string name="viewProduct">Ürün</string>
+    <string name="viewProduct2">Görüntüle</string>
     <string name="user_name">Kullanıcı Adı</string>
     <string name="password">Şifre</string>
     <string name="email">Email</string>
