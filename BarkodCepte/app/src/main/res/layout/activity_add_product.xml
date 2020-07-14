@@ -21,8 +21,9 @@
 
         <SurfaceView
             android:id="@+id/surface_addProduct"
-            android:layout_width="389dp"
-            android:layout_height="214dp" />
+            android:layout_width="match_parent"
+            android:layout_height="220dp" />
+
 
         <EditText
             android:id="@+id/edt_ProductBardcode"
@@ -40,13 +41,28 @@
             android:hint="Ürün Adı"
             android:inputType="textPersonName" />
 
-        <EditText
-            android:id="@+id/edt_ProductPrice"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Fiyat"
-            android:inputType="number|numberDecimal" />
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/edt_ProductPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Fiyat"
+                android:inputType="number|numberDecimal" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="10dp"
+                android:text="TL"
+                android:textSize="20sp" />
+        </LinearLayout>
 
         <EditText
             android:id="@+id/edt_ProductStock"
@@ -61,5 +77,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Kaydet" />
+
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -45,7 +45,7 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 SignUp();
-                Toast.makeText(getApplicationContext(),"Başarıyla Katıl Oldunuz!",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"Başarıyla Kayıt Oldunuz!",Toast.LENGTH_LONG).show();
                 Intent i = new Intent(SignUpActivity.this, LoginActivity.class);
                 startActivity(i);
             }
