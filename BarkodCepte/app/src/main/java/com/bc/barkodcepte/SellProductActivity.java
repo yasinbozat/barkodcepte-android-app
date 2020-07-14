@@ -5,6 +5,9 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -17,6 +20,7 @@ import android.util.SparseBooleanArray;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -45,21 +49,26 @@ public class SellProductActivity extends AppCompatActivity {
     private TextView barcodeText;
     private TextView barcodeText2;
 
-    private String barcodeData = "";
+    private String barcodeData="";
+    private boolean izin = true;
+
     String barcode_s;
     TextView urun_isim,urun_fiyat,toplam;
     //--Değişkenler--//
     ListView lv;
     ArrayAdapter<String > adapter;
     ArrayAdapter<String > adapter_toplam;
-    Button sil;
-    double urun_toplam;
+    Button sil,bitti;
+    public double urun_toplam = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sell_product);
-
+        //FULL SCREEN CODES ------------------------------------------------------------------------
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //------------------------------------------------------------------------------------------
 
         toneGen1 = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
         surfaceView = findViewById(R.id.surface_view);
@@ -70,6 +79,7 @@ public class SellProductActivity extends AppCompatActivity {
         toplam = (TextView) findViewById(R.id.toplam);
         lv = findViewById(R.id.listview);
         sil = findViewById(R.id.sil);
+        bitti = findViewById(R.id.bitti);
         toplam.setText("0");
         final ArrayList<String> list = new ArrayList<String>();
         final ArrayList<String> list2 = new ArrayList<String>();
@@ -103,9 +113,43 @@ double set_toplam = 0;
                 urun_toplam = set_toplam;
                 toplam.setText(urun_toplam+"");
                 positioncheck.clear();
-
                 adapter.notifyDataSetChanged();
                 adapter_toplam.notifyDataSetChanged();
+            }
+        });
+        bitti.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               // UPDATE personel SET prim=prim+50
+                        String urunadi = null;
+                        for (int i = 0;i<adapter.getCount();i++) {
+                            urunadi = adapter.getItem(i);
+                            try {
+                                Database d = new Database(SellProductActivity.this);
+                                SQLiteDatabase db = d.getReadableDatabase();
+                                String esittir = "=";
+
+                                String sorgu1 = "UPDATE urunler SET urunStok" + esittir + "urunStok-1" + " WHERE urunAdi" + esittir + "'" + urunadi + "'";
+                                db.execSQL(sorgu1);
+
+
+
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                                Toast.makeText(getApplicationContext(), "Bir Sorun Oluştu", Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
+                Toast.makeText(getApplicationContext(), "Satış Başarıyla Gerçekleştirildi", Toast.LENGTH_SHORT).show();
+
+                // Activity Reset Kodları
+                izin = false;
+                Intent i = new Intent(SellProductActivity.this,ReceiptActivity.class);
+                i.putExtra("toplam",urun_toplam);
+                finish();
+                startActivity(i);
+
+                //-----------------------
             }
         });
 
@@ -164,12 +208,6 @@ double set_toplam = 0;
             @Override
             public void receiveDetections(Detector.Detections<Barcode> detections) {
 
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
                 final SparseArray<Barcode> barcodes = detections.getDetectedItems();
                 if (barcodes.size() != 0) {
 
@@ -180,56 +218,64 @@ double set_toplam = 0;
 
                         public void run() {
 
+                            if (izin == true) {
+                                if (barcodes.valueAt(0).email != null) {
+                                    barcodeText.removeCallbacks(null);
+                                    barcodeData += barcodes.valueAt(0).email.address + "\n";
+                                    barcode_s = barcodeData;
 
-                            if (barcodes.valueAt(0).email != null) {
-                                barcodeText.removeCallbacks(null);
-                                barcodeData += barcodes.valueAt(0).email.address + "\n";
-                                barcode_s = barcodeData;
+                                    barcodeText.setText(barcodeData);
+                                    barcodeText.setText(barcodes.valueAt(0).email.address + "\n");
+                                    toneGen1.startTone(ToneGenerator.TONE_CDMA_PIP, 150);
+                                } else {
+                                    barcodeData += barcodes.valueAt(0).displayValue + "\n";
+                                    barcode_s = barcodes.valueAt(0).displayValue;
 
-                                barcodeText.setText(barcodeData);
-                                barcodeText.setText(barcodes.valueAt(0).email.address + "\n");
-                                toneGen1.startTone(ToneGenerator.TONE_CDMA_PIP, 150);
-                            } else {
-                                barcodeData += barcodes.valueAt(0).displayValue + "\n";
-                                barcode_s = barcodes.valueAt(0).displayValue;
+                                    barcodeText.setText(barcodeData);
+                                    toneGen1.startTone(ToneGenerator.TONE_CDMA_PIP, 150);
+                                    try {
+                                        Database d = new Database(SellProductActivity.this);
+                                        SQLiteDatabase db = d.getReadableDatabase();
+                                        String esittir = "=";
+                                        String sorgu = "SELECT urunAdi,urunFiyat FROM urunler WHERE barkod" + esittir + barcodes.valueAt(0).displayValue;
+                                        Cursor c = db.rawQuery(sorgu, null);
+                                        if (c != null) {
+                                            c.moveToFirst();
 
-                                barcodeText.setText(barcodeData);
-                                toneGen1.startTone(ToneGenerator.TONE_CDMA_PIP, 150);
-                        try {
-                                  Database d = new Database(SellProductActivity.this);
-                                  SQLiteDatabase db = d.getReadableDatabase();
-                                  String esittir = "=";
-                                  String sorgu = "SELECT urunAdi,urunFiyat FROM urunler WHERE barkod" + esittir + barcodes.valueAt(0).displayValue;
-                                  Cursor c = db.rawQuery(sorgu, null);
-                                  if (c != null) {
-                                   c.moveToFirst();
-
-                                   urun_isim.setText(c.getString(0));
-                                   urun_fiyat.setText(c.getString(1));
-                                   adapter.add(c.getString(0));
-                                   urun_toplam += c.getFloat(1);
-                                   float a =  c.getFloat(1);
-                                   adapter_toplam.add(String.valueOf(a));
-                                   toplam.setText(urun_toplam+"");
-                                 }
+                                            urun_isim.setText(c.getString(0));
+                                            urun_fiyat.setText(c.getString(1));
+                                            adapter.add(c.getString(0));
+                                            urun_toplam += c.getFloat(1);
+                                            float a = c.getFloat(1);
+                                            adapter_toplam.add(String.valueOf(a));
+                                            toplam.setText(urun_toplam + "");
+                                        }
 
 
+                                        barcodeText2.setText(barcodes.valueAt(0).displayValue);
 
-                           barcodeText2.setText(barcodes.valueAt(0).displayValue);
+                                        c.close();
+                                        adapter.notifyDataSetChanged();
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                        Toast.makeText(getApplicationContext(), "KAYITSIZ ÜRÜN", Toast.LENGTH_SHORT).show();
+                                    }
 
-                           c.close();
-                           adapter.notifyDataSetChanged();
-                          }
-                          catch (Exception e)
-                          {e.printStackTrace();
-                              Toast.makeText(getApplicationContext(),"KAYITSIZ ÜRÜN",Toast.LENGTH_SHORT).show();
-                          }
-
+                                }
                             }
                         }
                     });
 
+
+
                 }
+
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
             }
         });
     }
