@@ -43,28 +43,138 @@
             </LinearLayout>
         </ScrollView>
 
-        <EditText
-            android:id="@+id/editTextNumber"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/barcode"
-            android:inputType="number" />
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/editTextTextPersonName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/product_name"
-            android:inputType="textPersonName" />
+            <TextView
+                android:id="@+id/viewProduct_Txv1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:text="@string/barcode"
+                android:textColor="#c1a57b"
+                android:textSize="18sp" />
 
-        <EditText
-            android:id="@+id/editTextNumberDecimal"
+            <EditText
+                android:id="@+id/viewProduct_Barcode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#61533E"
+                android:textColorHighlight="#c1a57b"/>
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="numberDecimal" />
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/viewProduct_Txv2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:text="@string/product_name"
+                android:textColor="#c1a57b"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/viewProduct_Name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#61533E"
+                android:textColorHighlight="#c1a57b"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp">
+
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_weight="0"
+                android:text="@string/price"
+                android:textColor="#c1a57b"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/viewProduct_Price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#61533E"
+                android:textColorHighlight="#c1a57b"/>
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="10dp"
+                android:text="TL"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/viewProduct_Txv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:text="@string/stock_count"
+                android:textColor="#c1a57b"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/viewProduct_Stock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number|numberDecimal"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#61533E"
+                android:textColorHighlight="#c1a57b"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/viewProduct_Save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:text="Kaydet" />
+
 
     </LinearLayout>
 

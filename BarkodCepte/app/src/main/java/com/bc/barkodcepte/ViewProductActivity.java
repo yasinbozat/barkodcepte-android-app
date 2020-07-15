@@ -15,9 +15,12 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +30,10 @@ public class ViewProductActivity extends AppCompatActivity {
     public ArrayAdapter<String> adapter;
     ListView lv_View;
     SearchView viewProduct_search;
+    String barkod=null;
+    EditText viewProduct_Stock,viewProduct_Price,viewProduct_Name,viewProduct_Barcode;
+    Button viewProduct_Save;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +45,11 @@ public class ViewProductActivity extends AppCompatActivity {
 
         lv_View = findViewById(R.id.lv_View_stock_follow);
         viewProduct_search = findViewById(R.id.viewProduct_search);
+        viewProduct_Stock = findViewById(R.id.viewProduct_Stock);
+        viewProduct_Price = findViewById(R.id.viewProduct_Price);
+        viewProduct_Name = findViewById(R.id.viewProduct_Name);
+        viewProduct_Barcode = findViewById(R.id.viewProduct_Barcode);
+        viewProduct_Save = findViewById(R.id.viewProduct_Save);
 
         final ArrayAdapter<String>[] finalAdapter = new ArrayAdapter[]{adapter};
         viewProduct_search.onActionViewExpanded(); //new Added line
@@ -63,6 +75,28 @@ public class ViewProductActivity extends AppCompatActivity {
 
         Listele();
 
+        lv_View.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                barkod = adapter.getItem(position).substring(0,adapter.getItem(position).indexOf("|")).trim();
+                Database d = new Database(ViewProductActivity.this);
+                SQLiteDatabase db = d.getReadableDatabase();
+                String sorgu = "SELECT barkod,urunAdi,urunFiyat,urunStok FROM urunler WHERE barkod='"+barkod+"'";
+                Cursor c1 = db.rawQuery(sorgu, null);
+                if (c1!=null) {
+                    c1.moveToFirst();
+                    viewProduct_Barcode.setText(c1.getString(0));
+                    viewProduct_Name.setText(c1.getString(1));
+                    viewProduct_Price.setText(c1.getString(2));
+                    viewProduct_Stock.setText(c1.getString(3));
+                    adapter.notifyDataSetChanged();
+                }
+
+            }
+        });
+
+
         lv_View.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
@@ -84,7 +118,8 @@ public class ViewProductActivity extends AppCompatActivity {
                     String deger = adapter.getItem(position).substring(0,adapter.getItem(position).indexOf("|")).trim();
                     Database db = new Database(ViewProductActivity.this);
                     db.Delete(deger);
-                    Log.d("DEBUG","Silindi");
+                    Log.d("DEBUG","Ürün Başarıyla Silindi");
+                    Toast.makeText(getApplicationContext(),"Ürün Başarıyla Silindi",Toast.LENGTH_LONG).show();
                     Listele();
 
                 } catch (Exception e) {
@@ -95,6 +130,26 @@ public class ViewProductActivity extends AppCompatActivity {
                 builder.show();
 
                 return true;
+            }
+        });
+
+        viewProduct_Save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Database d = new Database(ViewProductActivity.this);
+                    SQLiteDatabase db = d.getReadableDatabase();
+                    String sorgu1 = "UPDATE urunler SET urunStok = "+viewProduct_Stock.getText()+", urunAdi = '"+viewProduct_Name.getText()+"', barkod ='"+viewProduct_Barcode.getText()+"', urunFiyat ="+viewProduct_Price.getText()+" WHERE barkod = '"+ barkod+"'";
+                    db.execSQL(sorgu1);
+                    Toast.makeText(getApplicationContext(),"Ürün Güncellendi",Toast.LENGTH_LONG).show();
+                    Listele();
+
+                }
+                catch (Exception e)
+                {e.printStackTrace();
+                    Toast.makeText(getApplicationContext(),"Bir Sorun Oluştu Değişiklikleri Kontrol Ediniz!",Toast.LENGTH_LONG).show();
+                }
+                adapter.notifyDataSetChanged();
             }
         });
 
@@ -123,10 +178,10 @@ public class ViewProductActivity extends AppCompatActivity {
         adapter.clear();
         Database d = new Database(ViewProductActivity.this);
         SQLiteDatabase db = d.getReadableDatabase();
-        String sorgu = "SELECT barkod,urunAdi,urunFiyat FROM urunler ";
+        String sorgu = "SELECT barkod,urunAdi,urunFiyat,urunStok FROM urunler ";
         final Cursor c = db.rawQuery(sorgu, null);
         while (c.moveToNext()) {
-            adapter.add(c.getString(0)+"    |   "+c.getString(1)+"  |   "+c.getString(2)+" TL");
+            adapter.add(c.getString(0)+"    |   "+c.getString(1)+"  |   "+c.getString(2)+" TL"+"    |   "+c.getString(3)+" Adet");
 
             adapter.notifyDataSetChanged();
 

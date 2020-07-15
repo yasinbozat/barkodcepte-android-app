@@ -25,7 +25,7 @@
         <activity android:name=".SignUpActivity" />
         <activity android:name=".SellProductActivity" />
         <activity android:name=".MyStoreActivity" />
-        <activity android:name=".ViewProductActivity" />
+        <activity android:name=".ViewProductActivity" android:windowSoftInputMode="adjustResize"/>
         <activity android:name=".AddProductActivity" />
 
         <meta-data

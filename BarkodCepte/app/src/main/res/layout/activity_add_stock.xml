@@ -85,7 +85,7 @@
                 android:ems="10"
                 android:hint="@string/stock"
                 android:inputType="numberDecimal"
-                android:textColor="#c1a57b"
+                android:textColor="#FFFFFF"
                 android:textColorHighlight="#c1a57b"
                 android:textColorHint="#806C4F"
                 android:textColorLink="#c1a57b" />
