@@ -11,16 +11,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ReceiptActivity"></activity>
-        <activity android:name=".AddStockActivity" />
-        <activity android:name=".StockFollowActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".ReceiptActivity" />
+        <activity android:name=".AddStockActivity" />
+        <activity android:name=".StockFollowActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".MainActivity">
+
         </activity>
         <activity android:name=".SignUpActivity" />
         <activity android:name=".SellProductActivity" />
@@ -36,10 +39,10 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
     </application>
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <dist:module dist:instant="true" />
 
     <dist:module dist:instant="true" />

@@ -74,7 +74,7 @@ public class Database extends SQLiteOpenHelper {
     public void Delete(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
         try {
-            String where = ROW_ID + " = " + id;
+            String where = ROW_BARKOD + " = " + id;
             db.delete(TABLE_URUNLER, where, null);
         } catch (Exception e) {
         }
