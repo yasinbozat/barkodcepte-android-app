@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -19,6 +20,12 @@ public class ReceiptActivity extends AppCompatActivity {
     TextView receipt_Toplam;
     Button receipt_Sell;
     ListView lv_View;
+    public static final String FIRST_COLUMN="First";
+    public static final String SECOND_COLUMN="Second";
+    public static final String THIRD_COLUMN="Third";
+    public ArrayList<String> barkod_array = new ArrayList<String>();
+    public ArrayList<String> urun_array = new ArrayList<String>();
+    public ArrayList<String> urunstok_array = new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,15 +34,16 @@ public class ReceiptActivity extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         //------------------------------------------------------------------------------------------
-//Listele();
+
         receipt_Toplam = findViewById(R.id.receipt_Toplam);
         receipt_Sell = findViewById(R.id.receipt_Sell);
 
 
         Intent i=getIntent();
         double toplam=i.getDoubleExtra("toplam",0);
+        list = i.getStringArrayListExtra("ArrayList_1");
         receipt_Toplam.setText(toplam+"");
-
+        Listele();
         receipt_Sell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,17 +56,15 @@ public class ReceiptActivity extends AppCompatActivity {
 
 
     }
-    /*public void Listele(){
+    public void Listele(){
         try {
             list=new ArrayList<HashMap<String,String>>();
             ListViewAdapter adapter=new ListViewAdapter(ReceiptActivity.this, list);
 
-            for (int x = 0;x<5;x++)
+            for (int x = 0;x<list.size();x++)
             {
                 HashMap<String,String> hashmap=new HashMap<String, String>();
                 hashmap.put(FIRST_COLUMN, barkod_array.get(x));
-                hashmap.put(SECOND_COLUMN,urun_array.get(x));
-                hashmap.put(THIRD_COLUMN, urunstok_array.get(x));
                 list.add(hashmap);
             }
             lv_View.setAdapter(adapter);
@@ -70,5 +76,5 @@ public class ReceiptActivity extends AppCompatActivity {
         {e.printStackTrace();}
 
 
-    }*/
+    }
 }
