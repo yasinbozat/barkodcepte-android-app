@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -104,6 +107,26 @@ public class AddStockActivity extends AppCompatActivity {
         });
     }
     public void goruntule(){
+
+        final ArrayList<String> list = new ArrayList<String>();
+        adapter = new ArrayAdapter<String>
+                (this, android.R.layout.simple_list_item_1, list){
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent){
+                // Get the Item from ListView
+                View view = super.getView(position, convertView, parent);
+
+                // Initialize a TextView for ListView each Item
+                TextView tv = (TextView) view.findViewById(android.R.id.text1);
+
+                // Set the text color of TextView (ListView Item)
+                tv.setTextColor(Color.rgb(255,255,255));
+
+                // Generate ListView Item using TextView
+                return view;
+            }
+        };
+
         adapter.clear();
         Database d = new Database(AddStockActivity.this);
         SQLiteDatabase db = d.getReadableDatabase();
@@ -116,6 +139,7 @@ public class AddStockActivity extends AppCompatActivity {
 
         }
         lv.setAdapter(adapter);
+
         c.close();
         search_AddProduct.clearFocus();
     }

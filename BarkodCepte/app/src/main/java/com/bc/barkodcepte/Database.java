@@ -71,10 +71,10 @@ public class Database extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void Delete(int id) {
+    public void Delete(String barkod) {
         SQLiteDatabase db = this.getWritableDatabase();
         try {
-            String where = ROW_ID + " = " + id;
+            String where = ROW_BARKOD + " = " + barkod;
             db.delete(TABLE_URUNLER, where, null);
         } catch (Exception e) {
         }

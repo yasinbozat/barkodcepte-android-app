@@ -10,20 +10,27 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
 
         <SearchView
             android:id="@+id/search_AddProduct"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#ececec" />
+            android:background="#ececec">
+
+        </SearchView>
 
         <ScrollView
             android:id="@+id/scrollView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:background="#ECECEC">
+            android:background="#343D4A">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -37,10 +44,35 @@
             </LinearLayout>
         </ScrollView>
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="@string/selected_item"
+                android:textColor="#c1a57b" />
+
+            <TextView
+                android:id="@+id/addStock_txv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="1"
+                android:textColor="#f2a365"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
 
             <EditText
                 android:id="@+id/edit_stok"
@@ -57,6 +89,7 @@
                 android:textColorHighlight="#c1a57b"
                 android:textColorHint="#806C4F"
                 android:textColorLink="#c1a57b" />
+
             <Button
                 android:id="@+id/btn_Kaydet"
                 android:layout_width="match_parent"
