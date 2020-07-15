@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
@@ -37,11 +38,13 @@ public class ReceiptActivity extends AppCompatActivity {
 
         receipt_Toplam = findViewById(R.id.receipt_Toplam);
         receipt_Sell = findViewById(R.id.receipt_Sell);
+        lv_View = findViewById(R.id.lv_receipt);
 
 
         Intent i=getIntent();
         double toplam=i.getDoubleExtra("toplam",0);
         list = i.getStringArrayListExtra("ArrayList_1");
+        Log.d("TAG", list.size()+"");
         receipt_Toplam.setText(toplam+"");
         Listele();
         receipt_Sell.setOnClickListener(new View.OnClickListener() {
@@ -58,7 +61,7 @@ public class ReceiptActivity extends AppCompatActivity {
     }
     public void Listele(){
         try {
-            list=new ArrayList<HashMap<String,String>>();
+
             ListViewAdapter adapter=new ListViewAdapter(ReceiptActivity.this, list);
 
             for (int x = 0;x<list.size();x++)

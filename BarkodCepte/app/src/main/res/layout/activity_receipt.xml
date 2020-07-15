@@ -29,6 +29,7 @@
                 android:orientation="vertical">
 
                 <ListView
+                    android:id="@+id/lv_receipt"
                     android:layout_width="match_parent"
                     android:layout_height="300dp" />
             </LinearLayout>

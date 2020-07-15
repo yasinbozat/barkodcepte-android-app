@@ -157,7 +157,7 @@ public class SellProductActivity extends AppCompatActivity {
                         }
                 Toast.makeText(getApplicationContext(), "Satış Başarıyla Gerçekleştirildi",
                                                                             Toast.LENGTH_SHORT).show();
-
+              
                 // Activity Reset Kodları
                 izin = false;
                 Intent i = new Intent(SellProductActivity.this,ReceiptActivity.class);
