@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -26,6 +27,7 @@ public class AddStockActivity extends AppCompatActivity {
     EditText stok;
     Button kaydet;
     String barkod=null;
+    TextView secilen_Urun;
     SearchView search_AddProduct;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,7 @@ public class AddStockActivity extends AppCompatActivity {
         stok  =    findViewById(R.id.edit_stok);
         lv = findViewById(R.id.stok_list);
         search_AddProduct = findViewById(R.id.search_AddProduct);
+        secilen_Urun = findViewById(R.id.addStock_txv);
         final ArrayList<String> list = new ArrayList<String>();
         adapter= new ArrayAdapter<String>(AddStockActivity.this,android.R.layout.simple_list_item_1,list);
 
@@ -102,7 +105,12 @@ public class AddStockActivity extends AppCompatActivity {
                     stok.setText(c1.getString(0));
                     adapter.notifyDataSetChanged();
                 }
-
+                String take_name = adapter.getItem(position);
+                take_name = take_name.replace(adapter.getItem(position).substring(0,adapter.getItem(position).indexOf(" - ")),"");
+                take_name = take_name.substring(2,take_name.length());
+                take_name = take_name.substring(0,take_name.indexOf("-"));
+                Log.d("TAG",  take_name);
+                secilen_Urun.setText(take_name);
             }
         });
     }
