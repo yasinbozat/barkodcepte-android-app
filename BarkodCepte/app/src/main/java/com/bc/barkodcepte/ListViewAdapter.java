@@ -67,7 +67,6 @@ public class ListViewAdapter extends BaseAdapter{
         HashMap<String, String> map=list.get(position);
         holder.txtFirst.setText(map.get(FIRST_COLUMN));
         holder.txtSecond.setText(map.get(SECOND_COLUMN));
-        holder.txtThird.setText(map.get(THIRD_COLUMN));
 
 
 
@@ -76,7 +75,6 @@ public class ListViewAdapter extends BaseAdapter{
     private class ViewHolder{
         TextView txtFirst;
         TextView txtSecond;
-        TextView txtThird;
     }
 
 }

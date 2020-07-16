@@ -162,7 +162,7 @@ public class SellProductActivity extends AppCompatActivity {
                 izin = false;
                 Intent i = new Intent(SellProductActivity.this,ReceiptActivity.class);
                 i.putExtra("toplam",urun_toplam);
-                i.putStringArrayListExtra("ArrayList_1",list2);
+                i.putStringArrayListExtra("ArrayList_1",list);
                 finish();
                 startActivity(i);
 
