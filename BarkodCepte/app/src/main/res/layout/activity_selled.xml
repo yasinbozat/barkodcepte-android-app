@@ -4,32 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MyStoreActivity"
     android:background="#222831"
-    >
+    tools:context=".ViewProductActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:layout_marginBottom="32dp"
+        android:id="@+id/linearLayout2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/btn_Selled"
+        <SearchView
+            android:id="@+id/selled_Search"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/selled"
-            android:background="@drawable/button"
-            android:textColor="#ffffff"/>
+            android:layout_height="40dp"
+            android:layout_marginBottom="8dp"
+            android:background="#ECECEC">
+
+        </SearchView>
+
+        <ListView
+            android:id="@+id/lv_Selled"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="8dp"
+            android:stackFromBottom="true"
+            android:transcriptMode="normal"/>
+
 
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

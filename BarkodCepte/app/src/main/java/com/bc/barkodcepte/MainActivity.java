@@ -67,9 +67,9 @@ public class MainActivity extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(getApplicationContext(),"Çok Yakında Sizlerle",Toast.LENGTH_SHORT).show();
-                /*Intent i = new Intent(MainActivity.this,MyStoreActivity.class);
-                startActivity(i);*/
+
+                Intent i = new Intent(MainActivity.this,MyStoreActivity.class);
+                startActivity(i);
 
             }
         });

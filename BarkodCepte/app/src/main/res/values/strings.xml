@@ -38,4 +38,9 @@
     <string name="price">Fiyat*</string>
     <string name="product_name">Ürün Adı*</string>
     <string name="selected_item">Seçilen Ürün :</string>
+    <string name="selled">Yapılan Satışlar</string>
+    <string name="save">Kaydet</string>
+    <string name="end">BİTTİ</string>
+    <string name="delete">SİL</string>
+    <string name="export">Dışa Aktar</string>
 </resources>

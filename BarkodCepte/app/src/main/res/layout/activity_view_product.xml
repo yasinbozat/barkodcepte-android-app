@@ -173,7 +173,10 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:text="Kaydet" />
+            android:text="@string/save"
+            android:background="@drawable/button"
+            android:textColor="#ffffff"
+            />
 
 
     </LinearLayout>

@@ -9,6 +9,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Database extends SQLiteOpenHelper {
@@ -26,6 +27,12 @@ public class Database extends SQLiteOpenHelper {
     private static final String ROW_FIYAT = "urunFiyat";
     private static final String ROW_STOK = "urunStok";
     //----------------------------------------------------------------------------------------------
+    //TABLE_RECEIPTS INFORMATION --------------------------------------------------------------------
+    private static final String TABLE_RECEIPTS = "receipts";
+    private static final String RECEIPTS_ID = "id";
+    private static final String RECEIPTS_DATE = "date";
+    private static final String RECEIPTS_PRICE = "price";
+    //----------------------------------------------------------------------------------------------
 
     public Database(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -39,7 +46,12 @@ public class Database extends SQLiteOpenHelper {
                 + ROW_BARKOD + " TEXT NOT NULL,"
                 + ROW_URUNADI + " TEXT NOT NULL,"
                 + ROW_FIYAT + " TEXT NOT NULL,"
-                + ROW_STOK + " INTEGER NOT NULL)"
+                + ROW_STOK + " INTEGER )"
+        );
+        db.execSQL("CREATE TABLE " + TABLE_RECEIPTS + "("
+                + RECEIPTS_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + RECEIPTS_DATE + " TEXT NOT NULL,"
+                + RECEIPTS_PRICE + " DOUBLE NOT NULL)"
         );
         Log.d("DEBUG", "Veritabanı oluşturuldu!");
 
@@ -103,6 +115,22 @@ public class Database extends SQLiteOpenHelper {
         }
         db.close();
         return data;
+    }
+
+    public void AddReceipt(String tarih, String fiyat) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        try {
+
+            ContentValues cv = new ContentValues();
+            cv.put(RECEIPTS_DATE, tarih);
+            cv.put(RECEIPTS_PRICE, fiyat);
+
+            db.insert(TABLE_RECEIPTS, null, cv);
+            Log.d("DEBUG", "maşarılı mro");
+        } catch (Exception e) {
+            Log.d("DEBUG", "Veritabanı oluşturma hatası!");
+        }
+        db.close();
     }
 
        /*public List<String> getProductType() {

@@ -28,6 +28,7 @@
                 android:id="@+id/Textfirstd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
                 android:layout_weight="1"
                 android:text="Ürün Adı"
                 android:textColor="#f2a365"
@@ -100,7 +101,8 @@
             android:layout_height="match_parent"
             android:layout_marginTop="10dp"
             android:layout_weight="1"
-            android:text="@string/sell" />
+            android:text="@string/sell"
+            android:background="@drawable/button"/>
 
     </LinearLayout>
 

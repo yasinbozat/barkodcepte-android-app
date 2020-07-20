@@ -179,6 +179,7 @@
                     android:textColor="#ECECEC"
                     android:textSize="18sp"
                     android:textStyle="normal" />
+
             </LinearLayout>
 
         </LinearLayout>
@@ -192,13 +193,20 @@
                 android:id="@+id/sil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="sil" />
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:background="@drawable/button_delete"
+                android:text="@string/delete"
+                android:textColor="#ffffff" />
 
             <Button
                 android:id="@+id/bitti"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="BİTTİ" />
+                android:layout_marginRight="7dp"
+                android:background="@drawable/button"
+                android:text="@string/end"
+                android:textColor="#ffffff" />
 
         </LinearLayout>
 

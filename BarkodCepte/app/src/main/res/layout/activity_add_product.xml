@@ -86,7 +86,9 @@
             android:id="@+id/btn_AddProduct"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Kaydet" />
+            android:background="@drawable/button"
+            android:text="@string/save"
+            android:textColor="#ffffff"/>
 
     </LinearLayout>
 
