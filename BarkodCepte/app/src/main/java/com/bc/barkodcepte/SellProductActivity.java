@@ -70,6 +70,7 @@ public class SellProductActivity extends AppCompatActivity {
         urun_isim =(TextView) findViewById(R.id.urun_isim);
         urun_fiyat =(TextView) findViewById(R.id.urun_fiyat);
         toplam = (TextView) findViewById(R.id.toplam);
+
         lv = findViewById(R.id.listview);
         sil = findViewById(R.id.sil);
         bitti = findViewById(R.id.bitti);
@@ -102,7 +103,7 @@ public class SellProductActivity extends AppCompatActivity {
         sil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-double set_toplam = 0;
+        double set_toplam = 0;
 
 
                 SparseBooleanArray positioncheck = lv.getCheckedItemPositions();
@@ -156,11 +157,12 @@ double set_toplam = 0;
                         }
                 Toast.makeText(getApplicationContext(), "Satış Başarıyla Gerçekleştirildi",
                                                                             Toast.LENGTH_SHORT).show();
-
+              
                 // Activity Reset Kodları
                 izin = false;
                 Intent i = new Intent(SellProductActivity.this,ReceiptActivity.class);
                 i.putExtra("toplam",urun_toplam);
+                i.putStringArrayListExtra("ArrayList_1",list);
                 finish();
                 startActivity(i);
 
