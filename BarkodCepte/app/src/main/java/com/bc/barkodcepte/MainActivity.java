@@ -10,11 +10,12 @@ import android.widget.Button;
 
 import android.view.WindowManager;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    private ImageButton btn_sell, btn_myStore,btn_addProduct,btn_viewProduct,btn_stockFollow,btn_addStock;
+    private ImageButton btn_sell, btn_myStore,btn_addProduct,btn_viewProduct,btn_addStock;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
         btn_sell = findViewById(R.id.btn_sell);
         btn_addProduct = findViewById(R.id.btn_addProduct);
         btn_viewProduct = findViewById(R.id.btn_viewProduct);
-        btn_stockFollow = findViewById(R.id.btn_stockFollow);
         btn_addStock = findViewById(R.id.btn_addStock);
         btn_myStore = findViewById(R.id.btn_myStore);
 
@@ -46,8 +46,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(MainActivity.this,MyStoreActivity.class);
-                startActivity(i);
+                Toast.makeText(getApplicationContext(),"Çok Yakında Sizlerle",Toast.LENGTH_SHORT).show();
+                /*Intent i = new Intent(MainActivity.this,MyStoreActivity.class);
+                startActivity(i);*/
 
             }
         });
@@ -65,15 +66,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent i = new Intent(MainActivity.this,ViewProductActivity.class);
-                startActivity(i);
-
-            }
-        });
-        btn_stockFollow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent i = new Intent(MainActivity.this,StockFollowActivity.class);
                 startActivity(i);
 
             }

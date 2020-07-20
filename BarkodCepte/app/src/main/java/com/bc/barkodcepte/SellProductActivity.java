@@ -2,15 +2,12 @@ package com.bc.barkodcepte;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-
 import android.Manifest;
-import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.ToneGenerator;
 import android.os.Bundle;
@@ -20,23 +17,19 @@ import android.util.SparseBooleanArray;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.Adapter;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.barcode.BarcodeDetector;
-
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class SellProductActivity extends AppCompatActivity {
 
@@ -83,8 +76,25 @@ public class SellProductActivity extends AppCompatActivity {
         toplam.setText("0");
         final ArrayList<String> list = new ArrayList<String>();
         final ArrayList<String> list2 = new ArrayList<String>();
-        adapter= new ArrayAdapter<String>(SellProductActivity.this,android.R.layout.simple_list_item_multiple_choice,list);
-        adapter_toplam= new ArrayAdapter<String>(SellProductActivity.this,android.R.layout.simple_list_item_multiple_choice,list2);
+        adapter = new ArrayAdapter<String>
+                (this, android.R.layout.simple_list_item_multiple_choice, list){
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent){
+                // Get the Item from ListView
+                View view = super.getView(position, convertView, parent);
+
+                // Initialize a TextView for ListView each Item
+                TextView tv = (TextView) view.findViewById(android.R.id.text1);
+
+                // Set the text color of TextView (ListView Item)
+                tv.setTextColor(Color.rgb(255,255,255));
+
+                // Generate ListView Item using TextView
+                return view;
+            }
+        };
+        adapter_toplam= new ArrayAdapter<String>(SellProductActivity.this,
+                                            android.R.layout.simple_list_item_multiple_choice,list2);
         lv.setAdapter(adapter);
         initialiseDetectorsAndSources();
 
@@ -93,6 +103,7 @@ public class SellProductActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 double set_toplam = 0;
+
 
                 SparseBooleanArray positioncheck = lv.getCheckedItemPositions();
                 int count = lv.getCount();
@@ -123,24 +134,28 @@ double set_toplam = 0;
                // UPDATE personel SET prim=prim+50
                         String urunadi = null;
                         for (int i = 0;i<adapter.getCount();i++) {
-                            urunadi = adapter.getItem(i);
+                            urunadi = adapter.getItem(i).substring(0, adapter.getItem(i).indexOf(" - "))
+                                                                                                    .trim();
                             try {
                                 Database d = new Database(SellProductActivity.this);
                                 SQLiteDatabase db = d.getReadableDatabase();
                                 String esittir = "=";
 
-                                String sorgu1 = "UPDATE urunler SET urunStok" + esittir + "urunStok-1" + " WHERE urunAdi" + esittir + "'" + urunadi + "'";
+                                String sorgu1 = "UPDATE urunler SET urunStok" + esittir + "urunStok-1"
+                                                + " WHERE urunAdi" + esittir + "'" + urunadi + "'";
                                 db.execSQL(sorgu1);
 
 
 
                             } catch (Exception e) {
                                 e.printStackTrace();
-                                Toast.makeText(getApplicationContext(), "Bir Sorun Oluştu", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Bir Sorun Oluştu",
+                                                                            Toast.LENGTH_SHORT).show();
                             }
 
                         }
-                Toast.makeText(getApplicationContext(), "Satış Başarıyla Gerçekleştirildi", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Satış Başarıyla Gerçekleştirildi",
+                                                                            Toast.LENGTH_SHORT).show();
 
                 // Activity Reset Kodları
                 izin = false;
@@ -174,7 +189,8 @@ double set_toplam = 0;
             public void surfaceCreated(SurfaceHolder holder) {
 
                 try {
-                    if (ActivityCompat.checkSelfPermission(SellProductActivity.this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+                    if (ActivityCompat.checkSelfPermission(SellProductActivity.this,
+                                Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
                         cameraSource.start(surfaceView.getHolder());
                     } else {
                         ActivityCompat.requestPermissions(SellProductActivity.this, new
@@ -202,7 +218,6 @@ double set_toplam = 0;
         barcodeDetector.setProcessor(new Detector.Processor<Barcode>() {
             @Override
             public void release() {
-                // Toast.makeText(getApplicationContext(), "To prevent memory leaks barcode scanner has been stopped", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -237,14 +252,16 @@ double set_toplam = 0;
                                         Database d = new Database(SellProductActivity.this);
                                         SQLiteDatabase db = d.getReadableDatabase();
                                         String esittir = "=";
-                                        String sorgu = "SELECT urunAdi,urunFiyat FROM urunler WHERE barkod" + esittir + barcodes.valueAt(0).displayValue;
+                                        String sorgu = "SELECT urunAdi,urunFiyat,barkod FROM urunler " +
+                                                "WHERE barkod" + esittir + barcodes.valueAt(0).displayValue;
                                         Cursor c = db.rawQuery(sorgu, null);
                                         if (c != null) {
                                             c.moveToFirst();
 
                                             urun_isim.setText(c.getString(0));
                                             urun_fiyat.setText(c.getString(1));
-                                            adapter.add(c.getString(0));
+                                            adapter.add(c.getString(0)+" - "+
+                                                                    c.getString(1)+" TL");
                                             urun_toplam += c.getFloat(1);
                                             float a = c.getFloat(1);
                                             adapter_toplam.add(String.valueOf(a));
@@ -258,7 +275,8 @@ double set_toplam = 0;
                                         adapter.notifyDataSetChanged();
                                     } catch (Exception e) {
                                         e.printStackTrace();
-                                        Toast.makeText(getApplicationContext(), "KAYITSIZ ÜRÜN", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(), "KAYITSIZ ÜRÜN",
+                                                                            Toast.LENGTH_SHORT).show();
                                     }
 
                                 }
