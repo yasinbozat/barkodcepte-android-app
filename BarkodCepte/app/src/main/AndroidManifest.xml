@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ReceiptActivity"></activity>
+        <activity android:name=".ExportActivity"></activity>
+        <activity android:name=".ReceiptActivity" />
         <activity android:name=".AddStockActivity" />
         <activity android:name=".StockFollowActivity" />
         <activity android:name=".LoginActivity" />
@@ -25,7 +26,9 @@
         <activity android:name=".SignUpActivity" />
         <activity android:name=".SellProductActivity" />
         <activity android:name=".MyStoreActivity" />
-        <activity android:name=".ViewProductActivity" android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".ViewProductActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".AddProductActivity" />
 
         <meta-data
@@ -36,10 +39,11 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
     </application>
-    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
     <dist:module dist:instant="true" />
 
     <dist:module dist:instant="true" />
