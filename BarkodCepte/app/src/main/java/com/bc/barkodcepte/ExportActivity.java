@@ -131,7 +131,7 @@ public class ExportActivity extends AppCompatActivity {
         try {
 
             // initialize asset manager
-            File inputFile = new File(getExternalFilesDir(null)+"/barkodcepte.xls");
+            File inputFile = new File(getExternalFilesDir(null) + "/barkodcepte.xls");
             //  open excel sheet
             InputStream myInput = new FileInputStream(inputFile);
             // Create a POI File System object
@@ -145,41 +145,53 @@ public class ExportActivity extends AppCompatActivity {
 
             // We now need something to iterate through the cells.
             Iterator<Row> rowIter = mySheet.rowIterator();
-            int rowno =0;
+            int rowno = 0;
             textView.append("\n");
             while (rowIter.hasNext()) {
-                Log.e("TAG", " row no "+ rowno );
+                Log.e("TAG", " row no " + rowno);
                 HSSFRow myRow = (HSSFRow) rowIter.next();
-                if(rowno !=0) {
+                if (rowno != 0) {
                     Iterator<Cell> cellIter = myRow.cellIterator();
-                    int colno =0;
-                    String barkod="", productName="", productPrice="",productStok="";
+                    int colno = 0;
+
+                    String barkod = "", productName = "", productPrice = "", productStok = "";
+
                     while (cellIter.hasNext()) {
-                        HSSFCell myCell = (HSSFCell) cellIter.next();
-                        if (colno==0){
-                            barkod = myCell.toString();
-                        }else if (colno==1){
-                            productName = myCell.toString();
-                        }else if (colno==2){
-                            productPrice = myCell.toString();
-                        }
-                        else if (colno==3){
-                            productStok = myCell.toString();
+                        if (true) {
+                            HSSFCell myCell = (HSSFCell) cellIter.next();
+
+                            Database d = new Database(ExportActivity.this);
+                            SQLiteDatabase db = d.getReadableDatabase();
+                            String sorgu = "SELECT barkod FROM urunler where barkod ='" + myCell.toString() + "'";
+                            final Cursor c = db.rawQuery(sorgu, null);
+                            String gelenveri;
+                            while (c.moveToNext()) {
+
+                            }
+                         
+                                if (colno == 0) {
+                                    barkod = myCell.toString();
+                                } else if (colno == 1) {
+                                    productName = myCell.toString();
+                                } else if (colno == 2) {
+                                    productPrice = myCell.toString();
+                                } else if (colno == 3) {
+                                    productStok = myCell.toString();
+                                }
+
+                                colno++;
+
+                                Log.e("TAG", " Index :" + myCell.getColumnIndex() + " -- " + myCell.toString());
+
                         }
 
-                        colno++;
-
-                        Log.e("TAG", " Index :" + myCell.getColumnIndex() + " -- " + myCell.toString());
                     }
-                    textView.append( barkod + " -- "+ productName+ "  -- "+ productPrice+"\n");
-                    Database db = new Database(ExportActivity.this);
-                    db.InsertData(barkod, productName, productPrice, productStok);
+                    rowno++;
                 }
-                rowno++;
+
+            } }catch(Exception e){
+                Log.e("TAG", "error " + e.toString());
             }
 
-        } catch (Exception e) {
-            Log.e("TAG", "error "+ e.toString());
-        }
     }
 }
