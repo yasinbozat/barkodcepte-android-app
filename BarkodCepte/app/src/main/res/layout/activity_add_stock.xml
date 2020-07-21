@@ -85,9 +85,9 @@
                 android:ems="10"
                 android:hint="@string/stock"
                 android:inputType="numberDecimal"
-                android:textColor="@color/light_yellow"
-                android:textColorHighlight="@color/mid_yellow"
-                android:textColorHint="@color/dark_yellow"
+                android:textColor="@color/edt_text"
+                android:textColorHighlight="@color/edt_link"
+                android:textColorHint="@color/edt_hint"
                 />
 
             <Button
@@ -103,7 +103,7 @@
                 android:layout_weight="3"
                 android:text="@string/save"
                 android:background="@drawable/button"
-                android:textColor="@color/white"/>
+                android:textColor="@color/btn_text"/>
 
         </LinearLayout>
 

@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
@@ -27,7 +28,7 @@ import java.io.IOException;
 public class AddProductActivity extends AppCompatActivity {
 
     private Button btn_AddProduct;
-    private EditText edt_ProductBardcode, edt_ProductName, edt_ProductPrice,edt_ProductStock;
+    private EditText edt_ProductBardcode, edt_ProductName, edt_ProductPrice,edt_ProductStock,edt_BuyPrice;
 
     //--Kameradan Barkod Okuma--//
     private SurfaceView surfaceView;
@@ -51,6 +52,7 @@ public class AddProductActivity extends AppCompatActivity {
         edt_ProductName = findViewById(R.id.edt_ProductName);
         edt_ProductPrice = findViewById(R.id.edt_ProductPrice);
         edt_ProductStock = findViewById(R.id.edt_ProductStock);
+        edt_BuyPrice = findViewById(R.id.edt_BuyPrice);
 
         //--Kameradan Barkod Okuma--//
         toneGen1 = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
@@ -67,13 +69,19 @@ public class AddProductActivity extends AppCompatActivity {
                     String productBarcode = edt_ProductBardcode.getText().toString();
                     String productName = edt_ProductName.getText().toString();
                     String productPrice = edt_ProductPrice.getText().toString();
+                    String productBuyPrice = edt_BuyPrice.getText().toString();
 
                     String productStock = edt_ProductStock.getText().toString();
-                    db.InsertData(productBarcode, productName, productPrice, productStock);
-                    Log.d("DEBUG","eklendi");
+                    db.InsertData(productBarcode, productName, productPrice, productBuyPrice , productStock);
+
+                    Toast.makeText(getApplicationContext(), "Başarıyla Ürün Eklendi",
+                                                                            Toast.LENGTH_SHORT).show();
+                    Log.d("DEBUG","Ürün Eklendi");
 
                 }catch (Exception e){
                     Log.d("DEBUG", String.valueOf(e));
+                    Toast.makeText(getApplicationContext(), "Bir Sorun Oluştu",
+                                                                            Toast.LENGTH_SHORT).show();
                 }
 
             }

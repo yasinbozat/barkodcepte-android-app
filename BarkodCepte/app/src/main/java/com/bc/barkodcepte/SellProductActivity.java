@@ -54,7 +54,7 @@ public class SellProductActivity extends AppCompatActivity {
     ArrayAdapter<String > adapter;
     ArrayAdapter<String > adapter_toplam;
     Button sil,bitti;
-    public double urun_toplam = 0;
+    public double urun_toplam = 0, urun_alis = 0, kar = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -155,6 +155,7 @@ public class SellProductActivity extends AppCompatActivity {
                                 String sorgu1 = "UPDATE urunler SET urunStok" + esittir + "urunStok-1"
                                                 + " WHERE urunAdi" + esittir + "'" + urunadi + "'";
                                 db.execSQL(sorgu1);
+                                kar = urun_toplam - urun_alis;
 
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -164,7 +165,7 @@ public class SellProductActivity extends AppCompatActivity {
 
                         }
 
-                d.AddReceipt(getCurrentDate(),String.valueOf(urun_toplam));
+                d.AddReceipt(getCurrentDate(),String.valueOf(urun_toplam),String.valueOf(kar));
                 Toast.makeText(getApplicationContext(), "Satış Başarıyla Gerçekleştirildi",
                                                                             Toast.LENGTH_SHORT).show();
               
@@ -172,6 +173,7 @@ public class SellProductActivity extends AppCompatActivity {
                 izin = false;
                 Intent i = new Intent(SellProductActivity.this,ReceiptActivity.class);
                 i.putExtra("toplam",urun_toplam);
+                i.putExtra("kar",kar);
                 i.putStringArrayListExtra("ArrayList_1",list);
                 finish();
                 startActivity(i);
@@ -264,7 +266,7 @@ public class SellProductActivity extends AppCompatActivity {
                                         Database d = new Database(SellProductActivity.this);
                                         SQLiteDatabase db = d.getReadableDatabase();
                                         String esittir = "=";
-                                        String sorgu = "SELECT urunAdi,urunFiyat,barkod FROM urunler " +
+                                        String sorgu = "SELECT urunAdi,urunFiyat,barkod,alis FROM urunler " +
                                                 "WHERE barkod" + esittir + barcodes.valueAt(0).displayValue;
                                         Cursor c = db.rawQuery(sorgu, null);
                                         if (c != null) {
@@ -278,6 +280,7 @@ public class SellProductActivity extends AppCompatActivity {
                                             float a = c.getFloat(1);
                                             adapter_toplam.add(String.valueOf(a));
                                             toplam.setText(urun_toplam + "");
+                                            urun_alis += c.getFloat(3);
                                         }
 
 

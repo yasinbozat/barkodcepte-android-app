@@ -26,12 +26,14 @@ public class Database extends SQLiteOpenHelper {
     private static final String ROW_URUNADI = "urunAdi";
     private static final String ROW_FIYAT = "urunFiyat";
     private static final String ROW_STOK = "urunStok";
+    private static final String ROW_ALIS = "alis";
     //----------------------------------------------------------------------------------------------
     //TABLE_RECEIPTS INFORMATION --------------------------------------------------------------------
     private static final String TABLE_RECEIPTS = "receipts";
     private static final String RECEIPTS_ID = "id";
     private static final String RECEIPTS_DATE = "date";
     private static final String RECEIPTS_PRICE = "price";
+    private static final String RECEIPTS_GAIN = "gain";
     //----------------------------------------------------------------------------------------------
 
     public Database(Context context) {
@@ -46,11 +48,13 @@ public class Database extends SQLiteOpenHelper {
                 + ROW_BARKOD + " TEXT NOT NULL,"
                 + ROW_URUNADI + " TEXT NOT NULL,"
                 + ROW_FIYAT + " TEXT NOT NULL,"
-                + ROW_STOK + " INTEGER )"
+                + ROW_ALIS + " TEXT NOT NULL,"
+                + ROW_STOK + " INTEGER NOT NULL )"
         );
         db.execSQL("CREATE TABLE " + TABLE_RECEIPTS + "("
                 + RECEIPTS_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + RECEIPTS_DATE + " TEXT NOT NULL,"
+                + RECEIPTS_GAIN + " TEXT NOT NULL,"
                 + RECEIPTS_PRICE + " DOUBLE NOT NULL)"
         );
         Log.d("DEBUG", "Veritabanı oluşturuldu!");
@@ -63,7 +67,7 @@ public class Database extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void InsertData(String urunBarkod, String urunAdi, String fiyat,String stok) {
+    public void InsertData(String urunBarkod, String urunAdi, String fiyat, String alis,String stok) {
         SQLiteDatabase db = this.getWritableDatabase();
         try {
 
@@ -72,6 +76,7 @@ public class Database extends SQLiteOpenHelper {
             cv.put(ROW_BARKOD, urunBarkod);
             cv.put(ROW_URUNADI, urunAdi);
             cv.put(ROW_FIYAT, fiyat);
+            cv.put(ROW_ALIS, alis);
             cv.put(ROW_STOK, stok);
 
 
@@ -119,13 +124,14 @@ public class Database extends SQLiteOpenHelper {
     }
 
     // RECEIPT -------------------------------------------------------------------------------------
-    public void AddReceipt(String tarih, String fiyat) {
+    public void AddReceipt(String tarih, String fiyat, String kar) {
         SQLiteDatabase db = this.getWritableDatabase();
         try {
 
             ContentValues cv = new ContentValues();
             cv.put(RECEIPTS_DATE, tarih);
             cv.put(RECEIPTS_PRICE, fiyat);
+            cv.put(RECEIPTS_GAIN, kar);
 
             db.insert(TABLE_RECEIPTS, null, cv);
             Log.d("DEBUG", "maşarılı mro");

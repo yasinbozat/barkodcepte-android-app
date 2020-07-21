@@ -40,6 +40,28 @@ public class SelledActivity extends AppCompatActivity {
 
         Listele();
 
+        final ArrayAdapter<String>[] finalAdapter = new ArrayAdapter[]{adapter};
+        selled_Search.onActionViewExpanded(); //new Added line
+        selled_Search.setIconifiedByDefault(false);
+        selled_Search.setQueryHint("Tarih Giriniz");
+
+        selled_Search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+            @Override
+            public boolean onQueryTextSubmit(String text) {
+                // TODO Auto-generated method stub
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String text) {
+
+                finalAdapter[0] = adapter;
+
+                finalAdapter[0].getFilter().filter(text);
+                return false;
+            }
+        });
+
 
         lv_Selled.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -59,7 +81,7 @@ public class SelledActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         try {
 
-                            String id = adapter.getItem(position).substring(0,adapter.getItem(position).indexOf("|")).trim();
+                            String id = adapter.getItem(position).substring(0,adapter.getItem(position).indexOf(")")).trim();
                             Database db = new Database(SelledActivity.this);
                             db.DeleteReceipt(id);
                             Log.d("DEBUG","Satış Kaydı Başarıyla Silindi");
@@ -105,11 +127,11 @@ public class SelledActivity extends AppCompatActivity {
         adapter.clear();
         Database d = new Database(SelledActivity.this);
         SQLiteDatabase db = d.getReadableDatabase();
-        String sorgu = "SELECT id,date,price FROM receipts ";
+        String sorgu = "SELECT id,date,price,gain FROM receipts ";
         final Cursor c = db.rawQuery(sorgu, null);
         while (c.moveToNext()) {
            String tarih = c.getString(1);
-            adapter.add(c.getString(0)+"  |   "+tarih+"  |   "+c.getString(2)+" TL");
+            adapter.add(c.getString(0)+" )   "+tarih+"  |   Satış : "+c.getString(2)+" TL"+"  |   Kâr : "+c.getString(3)+" TL");
 
             adapter.notifyDataSetChanged();
 
