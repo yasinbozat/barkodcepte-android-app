@@ -88,6 +88,7 @@ public class Database extends SQLiteOpenHelper {
         db.close();
     }
 
+
     public void Delete(String barkod) {
         SQLiteDatabase db = this.getWritableDatabase();
         try {
