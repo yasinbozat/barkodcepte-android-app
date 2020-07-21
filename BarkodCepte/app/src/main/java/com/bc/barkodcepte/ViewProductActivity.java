@@ -31,7 +31,7 @@ public class ViewProductActivity extends AppCompatActivity {
     ListView lv_View;
     SearchView viewProduct_search;
     String barkod=null;
-    EditText viewProduct_Stock,viewProduct_Price,viewProduct_Name,viewProduct_Barcode;
+    EditText viewProduct_Stock,viewProduct_Price,viewProduct_Name,viewProduct_Barcode,viewProduct_BuyPrice;
     Button viewProduct_Save;
 
     @Override
@@ -50,6 +50,7 @@ public class ViewProductActivity extends AppCompatActivity {
         viewProduct_Name = findViewById(R.id.viewProduct_Name);
         viewProduct_Barcode = findViewById(R.id.viewProduct_Barcode);
         viewProduct_Save = findViewById(R.id.viewProduct_Save);
+        viewProduct_BuyPrice = findViewById(R.id.viewProduct_BuyPrice);
 
         final ArrayAdapter<String>[] finalAdapter = new ArrayAdapter[]{adapter};
         viewProduct_search.onActionViewExpanded(); //new Added line
@@ -82,14 +83,15 @@ public class ViewProductActivity extends AppCompatActivity {
                 barkod = adapter.getItem(position).substring(0,adapter.getItem(position).indexOf("|")).trim();
                 Database d = new Database(ViewProductActivity.this);
                 SQLiteDatabase db = d.getReadableDatabase();
-                String sorgu = "SELECT barkod,urunAdi,urunFiyat,urunStok FROM urunler WHERE barkod='"+barkod+"'";
+                String sorgu = "SELECT barkod,urunAdi,urunFiyat,alis,urunStok FROM urunler WHERE barkod='"+barkod+"'";
                 Cursor c1 = db.rawQuery(sorgu, null);
                 if (c1!=null) {
                     c1.moveToFirst();
                     viewProduct_Barcode.setText(c1.getString(0));
                     viewProduct_Name.setText(c1.getString(1));
                     viewProduct_Price.setText(c1.getString(2));
-                    viewProduct_Stock.setText(c1.getString(3));
+                    viewProduct_BuyPrice.setText(c1.getString(3));
+                    viewProduct_Stock.setText(c1.getString(4));
                     adapter.notifyDataSetChanged();
                 }
 
@@ -139,7 +141,12 @@ public class ViewProductActivity extends AppCompatActivity {
                 try {
                     Database d = new Database(ViewProductActivity.this);
                     SQLiteDatabase db = d.getReadableDatabase();
-                    String sorgu1 = "UPDATE urunler SET urunStok = "+viewProduct_Stock.getText()+", urunAdi = '"+viewProduct_Name.getText()+"', barkod ='"+viewProduct_Barcode.getText()+"', urunFiyat ="+viewProduct_Price.getText()+" WHERE barkod = '"+ barkod+"'";
+
+                    String sorgu1 = "UPDATE urunler SET urunStok = "+viewProduct_Stock.getText()+", " +
+                     "urunAdi = '"+viewProduct_Name.getText()+"', barkod ='"+viewProduct_Barcode.getText()+"'," +
+                     " alis='"+viewProduct_BuyPrice.getText()+"', urunFiyat ="+viewProduct_Price.getText()+" " +
+                     "WHERE barkod = '"+ barkod+"'";
+
                     db.execSQL(sorgu1);
                     Toast.makeText(getApplicationContext(),"Ürün Güncellendi",Toast.LENGTH_LONG).show();
                     Listele();
@@ -147,7 +154,8 @@ public class ViewProductActivity extends AppCompatActivity {
                 }
                 catch (Exception e)
                 {e.printStackTrace();
-                    Toast.makeText(getApplicationContext(),"Bir Sorun Oluştu Değişiklikleri Kontrol Ediniz!",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Bir Sorun Oluştu Değişiklikleri Kontrol Ediniz!",
+                                                                                    Toast.LENGTH_LONG).show();
                 }
                 adapter.notifyDataSetChanged();
             }
@@ -178,10 +186,10 @@ public class ViewProductActivity extends AppCompatActivity {
         adapter.clear();
         Database d = new Database(ViewProductActivity.this);
         SQLiteDatabase db = d.getReadableDatabase();
-        String sorgu = "SELECT barkod,urunAdi,urunFiyat,urunStok FROM urunler ";
+        String sorgu = "SELECT barkod,urunAdi,urunFiyat,alis,urunStok FROM urunler ";
         final Cursor c = db.rawQuery(sorgu, null);
         while (c.moveToNext()) {
-            adapter.add(c.getString(0)+"    |   "+c.getString(1)+"  |   "+c.getString(2)+" TL"+"    |   "+c.getString(3)+" Adet");
+            adapter.add(c.getString(0)+"    |   "+c.getString(1)+"  |   Satış : "+c.getString(2)+" TL   |   Alış: "+c.getString(3)+" TL   |   "+c.getString(4)+" Adet");
 
             adapter.notifyDataSetChanged();
 

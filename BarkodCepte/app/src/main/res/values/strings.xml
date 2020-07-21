@@ -32,10 +32,19 @@
     <string name="email">Email</string>
     <string name="login">Giriş</string>
     <string name="sign_up">Kayıt Ol</string>
-    <string name="stock">Stok Giriniz*</string>Stok Adeti (zorunlu değil)
-    <string name="stock_count">Stok Adeti (zorunlu değil)</string>
+    <string name="stock">Stok Giriniz*</string>
+    <string name="stock_count">Stok Adeti*</string>
     <string name="barcode">Barkod*</string>
     <string name="price">Fiyat*</string>
     <string name="product_name">Ürün Adı*</string>
     <string name="selected_item">Seçilen Ürün :</string>
+    <string name="selled">Yapılan Satışlar</string>
+    <string name="save">Kaydet</string>
+    <string name="end">Bitti</string>
+    <string name="delete">SİL</string>
+    <string name="imports">İçe Aktar</string>
+    <string name="export">Dışa Aktar</string>
+    <string name="analysis">Analiz</string>
+    <string name="buyPrice">Alış Fiyatı*</string>
+
 </resources>

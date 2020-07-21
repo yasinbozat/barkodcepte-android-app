@@ -20,13 +20,14 @@ import java.util.HashMap;
 
 public class ReceiptActivity extends AppCompatActivity {
     ArrayList list;
-    TextView receipt_Toplam;
+    TextView receipt_Toplam,receipt_Kar;
     Button receipt_Sell;
     ListView lv_View;
     public static final String FIRST_COLUMN = "First";
     public static final String SECOND_COLUMN = "Second";
     public ArrayList<String> fiyat_array = new ArrayList<String>();
     public ArrayList<String> urun_array = new ArrayList<String>();
+    double kar = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,15 +39,19 @@ public class ReceiptActivity extends AppCompatActivity {
         //------------------------------------------------------------------------------------------
 
         receipt_Toplam = findViewById(R.id.receipt_Toplam);
+        receipt_Kar = findViewById(R.id.receipt_Kar);
         receipt_Sell = findViewById(R.id.receipt_Sell);
         lv_View = findViewById(R.id.lv_receip);
 
 
         Intent i = getIntent();
         double toplam = i.getDoubleExtra("toplam", 0);
+        double kar = i.getDoubleExtra("kar", 0);
+
 
 
         receipt_Toplam.setText(toplam + "");
+        receipt_Kar.setText(kar+"");
         Listele();
         receipt_Sell.setOnClickListener(new View.OnClickListener() {
             @Override

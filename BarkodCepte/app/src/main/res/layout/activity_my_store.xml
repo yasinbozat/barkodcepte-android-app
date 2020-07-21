@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MyStoreActivity">
+    tools:context=".MyStoreActivity"
+    android:background="@color/background"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,17 +24,21 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/btn_addProduct"
+            android:id="@+id/btn_Selled"
             android:layout_width="match_parent"
-            android:layout_height="75dp"
-            android:text="@string/addProduct" />
+            android:layout_height="wrap_content"
+            android:text="@string/selled"
+            android:background="@drawable/button"
+            android:textColor="@color/btn_text"/>
 
         <Button
-            android:id="@+id/btn_viewProduct"
+            android:id="@+id/btn_Analysis"
             android:layout_width="match_parent"
-            android:layout_height="75dp"
-            android:layout_marginTop="25dp"
-            android:text="@string/viewProduct" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/button"
+            android:text="@string/analysis"
+            android:textColor="@color/btn_text" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -29,7 +29,11 @@ import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.barcode.BarcodeDetector;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
 
 public class SellProductActivity extends AppCompatActivity {
 
@@ -41,10 +45,8 @@ public class SellProductActivity extends AppCompatActivity {
     private ToneGenerator toneGen1;
     private TextView barcodeText;
     private TextView barcodeText2;
-
     private String barcodeData="";
     private boolean izin = true;
-
     String barcode_s;
     TextView urun_isim,urun_fiyat,toplam;
     //--Değişkenler--//
@@ -52,7 +54,7 @@ public class SellProductActivity extends AppCompatActivity {
     ArrayAdapter<String > adapter;
     ArrayAdapter<String > adapter_toplam;
     Button sil,bitti;
-    public double urun_toplam = 0;
+    public double urun_toplam = 0, urun_alis = 0, kar = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +77,11 @@ public class SellProductActivity extends AppCompatActivity {
         sil = findViewById(R.id.sil);
         bitti = findViewById(R.id.bitti);
         toplam.setText("0");
+
+
+
+
+
         final ArrayList<String> list = new ArrayList<String>();
         final ArrayList<String> list2 = new ArrayList<String>();
         adapter = new ArrayAdapter<String>
@@ -134,19 +141,21 @@ public class SellProductActivity extends AppCompatActivity {
             public void onClick(View view) {
                // UPDATE personel SET prim=prim+50
                         String urunadi = null;
+                Database d = new Database(SellProductActivity.this);
                         for (int i = 0;i<adapter.getCount();i++) {
                             urunadi = adapter.getItem(i).substring(0, adapter.getItem(i).indexOf(" - "))
                                                                                                     .trim();
+
                             try {
-                                Database d = new Database(SellProductActivity.this);
+
+                                String fiyat = urun_fiyat.getText().toString();
                                 SQLiteDatabase db = d.getReadableDatabase();
                                 String esittir = "=";
 
                                 String sorgu1 = "UPDATE urunler SET urunStok" + esittir + "urunStok-1"
                                                 + " WHERE urunAdi" + esittir + "'" + urunadi + "'";
                                 db.execSQL(sorgu1);
-
-
+                                kar = urun_toplam - urun_alis;
 
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -155,6 +164,8 @@ public class SellProductActivity extends AppCompatActivity {
                             }
 
                         }
+
+                d.AddReceipt(getCurrentDate(),String.valueOf(urun_toplam),String.valueOf(kar));
                 Toast.makeText(getApplicationContext(), "Satış Başarıyla Gerçekleştirildi",
                                                                             Toast.LENGTH_SHORT).show();
               
@@ -162,6 +173,7 @@ public class SellProductActivity extends AppCompatActivity {
                 izin = false;
                 Intent i = new Intent(SellProductActivity.this,ReceiptActivity.class);
                 i.putExtra("toplam",urun_toplam);
+                i.putExtra("kar",kar);
                 i.putStringArrayListExtra("ArrayList_1",list);
                 finish();
                 startActivity(i);
@@ -254,20 +266,21 @@ public class SellProductActivity extends AppCompatActivity {
                                         Database d = new Database(SellProductActivity.this);
                                         SQLiteDatabase db = d.getReadableDatabase();
                                         String esittir = "=";
-                                        String sorgu = "SELECT urunAdi,urunFiyat,barkod FROM urunler " +
+                                        String sorgu = "SELECT urunAdi,urunFiyat,barkod,alis FROM urunler " +
                                                 "WHERE barkod" + esittir + barcodes.valueAt(0).displayValue;
                                         Cursor c = db.rawQuery(sorgu, null);
                                         if (c != null) {
                                             c.moveToFirst();
 
                                             urun_isim.setText(c.getString(0));
-                                            urun_fiyat.setText(c.getString(1));
+                                            urun_fiyat.setText(c.getString(1)+" TL");
                                             adapter.add(c.getString(0)+" - "+
                                                                     c.getString(1)+" TL");
                                             urun_toplam += c.getFloat(1);
                                             float a = c.getFloat(1);
                                             adapter_toplam.add(String.valueOf(a));
                                             toplam.setText(urun_toplam + "");
+                                            urun_alis += c.getFloat(3);
                                         }
 
 
@@ -311,5 +324,14 @@ public class SellProductActivity extends AppCompatActivity {
         super.onResume();
 
         initialiseDetectorsAndSources();
+    }
+
+
+    public static String getCurrentDate() {
+        String DATE_FORMAT = "dd-MM-yyyy HH:mm";
+        SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+        dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+        Date today = Calendar.getInstance().getTime();
+        return dateFormat.format(today);
     }
 }

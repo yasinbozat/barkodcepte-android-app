@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- DON'T TOUCH THIS // DOKUNMA -->
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <!-- DON'T TOUCH THIS // DOKUNMA -->
+
+    <!-- EDIT TEXT -->
+    <color name="edt_text">#FFFFFF</color>
+    <color name="edt_hint">#61533E</color>
+    <color name="edt_link">#BFA47A</color><!-- IT'S HIGHLIGHT COLOR // HIGHLIGHT RENGİDİR -->
+    <!-- EDIT TEXT -->
+
+    <!-- BUTTON -->
+    <color name="btn_text">#FFFFFF</color>
+    <color name="btn_delete">#e8505b</color>
+    <color name="btn_all">#f2a365</color>
+    <!-- BUTTON -->
+    <color name="search">#ececec</color>
+    <color name="background">#222831</color>
+    <color name="light_background">#343D4A</color>
+    <color name="main_button">#f2a365</color>
+    <color name="light_yellow">#f2a365</color>
+    <color name="mid_yellow">#c1a57b</color>
+    <color name="dark_yellow">#61533E</color>
+    <color name="white">#ffffff</color>
+    <color name="dolar_green">#85bb65</color>
+    <color name="sky">#87ceeb</color>
+    <color name="purple">#6f4a8e</color>
 </resources>

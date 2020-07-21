@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#222831"
+    android:background="@color/background"
     tools:context=".AddStockActivity">
 
     <LinearLayout
@@ -21,7 +21,7 @@
             android:id="@+id/search_AddProduct"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#ececec">
+            android:background="@color/search">
 
         </SearchView>
 
@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:background="#343D4A">
+            android:background="@color/light_background">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:text="@string/selected_item"
-                android:textColor="#c1a57b" />
+                android:textColor="@color/mid_yellow" />
 
             <TextView
                 android:id="@+id/addStock_txv"
@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_weight="1"
-                android:textColor="#f2a365"
+                android:textColor="@color/light_yellow"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -85,10 +85,10 @@
                 android:ems="10"
                 android:hint="@string/stock"
                 android:inputType="numberDecimal"
-                android:textColor="#FFFFFF"
-                android:textColorHighlight="#c1a57b"
-                android:textColorHint="#806C4F"
-                android:textColorLink="#c1a57b" />
+                android:textColor="@color/edt_text"
+                android:textColorHighlight="@color/edt_link"
+                android:textColorHint="@color/edt_hint"
+                />
 
             <Button
                 android:id="@+id/btn_Kaydet"
@@ -101,7 +101,9 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
                 android:layout_weight="3"
-                android:text="KAYDET" />
+                android:text="@string/save"
+                android:background="@drawable/button"
+                android:textColor="@color/btn_text"/>
 
         </LinearLayout>
 

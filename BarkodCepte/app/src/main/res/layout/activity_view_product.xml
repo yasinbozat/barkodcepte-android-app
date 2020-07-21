@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#222831"
+    android:background="@color/background"
     tools:context=".ViewProductActivity">
 
     <LinearLayout
@@ -21,14 +21,14 @@
             android:id="@+id/viewProduct_search"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:background="#ECECEC">
+            android:background="@color/search">
 
         </SearchView>
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#343D4A"
+            android:background="@color/light_background"
             >
 
             <LinearLayout
@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="8dp"
                 android:text="@string/barcode"
-                android:textColor="#c1a57b"
+                android:textColor="@color/mid_yellow"
                 android:textSize="18sp" />
 
             <EditText
@@ -65,9 +65,9 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="number"
-                android:textColor="#FFFFFF"
-                android:textColorHint="#61533E"
-                android:textColorHighlight="#c1a57b"/>
+                android:textColor="@color/edt_text"
+                android:textColorHint="@color/edt_hint"
+                android:textColorHighlight="@color/edt_link"/>
 
         </LinearLayout>
 
@@ -84,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="8dp"
                 android:text="@string/product_name"
-                android:textColor="#c1a57b"
+                android:textColor="@color/mid_yellow"
                 android:textSize="18sp" />
 
             <EditText
@@ -93,11 +93,12 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:textColor="#FFFFFF"
-                android:textColorHint="#61533E"
-                android:textColorHighlight="#c1a57b"/>
+                android:textColor="@color/edt_text"
+                android:textColorHint="@color/edt_hint"
+                android:textColorHighlight="@color/edt_link"/>
 
         </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -114,7 +115,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_weight="0"
                 android:text="@string/price"
-                android:textColor="#c1a57b"
+                android:textColor="@color/mid_yellow"
                 android:textSize="18sp" />
 
             <EditText
@@ -123,9 +124,9 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="number|numberDecimal"
-                android:textColor="#FFFFFF"
-                android:textColorHint="#61533E"
-                android:textColorHighlight="#c1a57b"/>
+                android:textColor="@color/edt_text"
+                android:textColorHint="@color/edt_hint"
+                android:textColorHighlight="@color/edt_link"/>
 
             <TextView
                 android:id="@+id/textView2"
@@ -134,7 +135,47 @@
                 android:layout_weight="1"
                 android:paddingLeft="10dp"
                 android:text="TL"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/edt_text"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp">
+
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_weight="0"
+                android:text="@string/buyPrice"
+                android:textColor="@color/mid_yellow"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/viewProduct_BuyPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:textColor="@color/edt_text"
+                android:textColorHint="@color/edt_hint"
+                android:textColorHighlight="@color/edt_link"/>
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="10dp"
+                android:text="TL"
+                android:textColor="@color/edt_text"
                 android:textSize="20sp" />
 
         </LinearLayout>
@@ -153,7 +194,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="8dp"
                 android:text="@string/stock_count"
-                android:textColor="#c1a57b"
+                android:textColor="@color/mid_yellow"
                 android:textSize="18sp" />
 
             <EditText
@@ -161,9 +202,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number|numberDecimal"
-                android:textColor="#FFFFFF"
-                android:textColorHint="#61533E"
-                android:textColorHighlight="#c1a57b"/>
+                android:textColor="@color/edt_text"
+                android:textColorHint="@color/edt_hint"
+                android:textColorHighlight="@color/edt_link"/>
 
         </LinearLayout>
 
@@ -173,7 +214,10 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:text="Kaydet" />
+            android:text="@string/save"
+            android:background="@drawable/button"
+            android:textColor="@color/btn_text"
+            />
 
 
     </LinearLayout>

@@ -11,10 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
+
+        <activity android:name=".SelledActivity"></activity>
         <activity android:name=".ExportActivity"></activity>
         <activity android:name=".ReceiptActivity" />
         <activity android:name=".AddStockActivity" />
-        <activity android:name=".StockFollowActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
