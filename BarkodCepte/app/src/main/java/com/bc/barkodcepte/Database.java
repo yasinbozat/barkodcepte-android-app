@@ -94,6 +94,7 @@ public class Database extends SQLiteOpenHelper {
     }
 
 
+
     public List<String> SelectData() {
         List<String> data = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
@@ -117,6 +118,7 @@ public class Database extends SQLiteOpenHelper {
         return data;
     }
 
+    // RECEIPT -------------------------------------------------------------------------------------
     public void AddReceipt(String tarih, String fiyat) {
         SQLiteDatabase db = this.getWritableDatabase();
         try {
@@ -132,6 +134,16 @@ public class Database extends SQLiteOpenHelper {
         }
         db.close();
     }
+    public void DeleteReceipt(String id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        try {
+            String where = RECEIPTS_ID + " = " + id;
+            db.delete(TABLE_RECEIPTS, where, null);
+        } catch (Exception e) {
+        }
+        db.close();
+    }
+    // RECEIPT -------------------------------------------------------------------------------------
 
        /*public List<String> getProductType() {
 

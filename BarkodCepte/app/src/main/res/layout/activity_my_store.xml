@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MyStoreActivity"
-    android:background="#222831"
+    android:background="@color/background"
     >
 
     <LinearLayout
@@ -29,7 +29,16 @@
             android:layout_height="wrap_content"
             android:text="@string/selled"
             android:background="@drawable/button"
-            android:textColor="#ffffff"/>
+            android:textColor="@color/btn_text"/>
+
+        <Button
+            android:id="@+id/btn_Analysis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/button"
+            android:text="@string/analysis"
+            android:textColor="@color/btn_text" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

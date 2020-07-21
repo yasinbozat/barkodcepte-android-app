@@ -40,7 +40,11 @@
     <string name="selected_item">Seçilen Ürün :</string>
     <string name="selled">Yapılan Satışlar</string>
     <string name="save">Kaydet</string>
-    <string name="end">BİTTİ</string>
+    <string name="end">Bitti</string>
     <string name="delete">SİL</string>
+    <string name="imports">İçe Aktar</string>
     <string name="export">Dışa Aktar</string>
+    <string name="analysis">Analiz</string>
+
+
 </resources>

@@ -1,0 +1,39 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\Fatih\Desktop\barcodescanner-master\zxing\src\main\AndroidManifest.xml:3:1-5:12
+INJECTED from C:\Users\Fatih\Desktop\barcodescanner-master\zxing\src\main\AndroidManifest.xml:3:1-5:12
+INJECTED from C:\Users\Fatih\Desktop\barcodescanner-master\zxing\src\main\AndroidManifest.xml:3:1-5:12
+INJECTED from C:\Users\Fatih\Desktop\barcodescanner-master\zxing\src\main\AndroidManifest.xml:3:1-5:12
+INJECTED from C:\Users\Fatih\Desktop\barcodescanner-master\zxing\src\main\AndroidManifest.xml:3:1-5:12
+INJECTED from C:\Users\Fatih\Desktop\barcodescanner-master\zxing\src\main\AndroidManifest.xml:3:1-5:12
+INJECTED from C:\Users\Fatih\Desktop\barcodescanner-master\zxing\src\main\AndroidManifest.xml:3:1-5:12
+	package
+		ADDED from C:\Users\Fatih\Desktop\barcodescanner-master\zxing\src\main\AndroidManifest.xml:3:70-107
+		INJECTED from C:\Users\Fatih\Desktop\barcodescanner-master\zxing\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Fatih\Desktop\barcodescanner-master\zxing\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Users\Fatih\Desktop\barcodescanner-master\zxing\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Fatih\Desktop\barcodescanner-master\zxing\src\main\AndroidManifest.xml:3:1-5:12
+		INJECTED from C:\Users\Fatih\Desktop\barcodescanner-master\zxing\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from C:\Users\Fatih\Desktop\barcodescanner-master\zxing\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Fatih\Desktop\barcodescanner-master\zxing\src\main\AndroidManifest.xml:3:1-5:12
+		INJECTED from C:\Users\Fatih\Desktop\barcodescanner-master\zxing\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\Fatih\Desktop\barcodescanner-master\zxing\src\main\AndroidManifest.xml:3:11-69
+application
+ADDED from C:\Users\Fatih\Desktop\barcodescanner-master\zxing\src\main\AndroidManifest.xml:4:5-32
+uses-sdk
+INJECTED from C:\Users\Fatih\Desktop\barcodescanner-master\zxing\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\Fatih\Desktop\barcodescanner-master\zxing\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Fatih\Desktop\barcodescanner-master\zxing\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Fatih\Desktop\barcodescanner-master\zxing\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Fatih\Desktop\barcodescanner-master\zxing\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from C:\Users\Fatih\Desktop\barcodescanner-master\zxing\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Fatih\Desktop\barcodescanner-master\zxing\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Fatih\Desktop\barcodescanner-master\zxing\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\Fatih\Desktop\barcodescanner-master\zxing\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Fatih\Desktop\barcodescanner-master\zxing\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Fatih\Desktop\barcodescanner-master\zxing\src\main\AndroidManifest.xml

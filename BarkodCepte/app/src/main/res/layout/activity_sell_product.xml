@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@color/background"
     android:visibility="visible"
     tools:context=".SellProductActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#222831"
         android:orientation="vertical">
 
         <SurfaceView
@@ -31,7 +30,7 @@
             android:paddingLeft="97dp"
             android:paddingTop="10dp"
             android:text="SON EKLENEN ÜRÜN BİLGİSİ"
-            android:textColor="#f2a365" />
+            android:textColor="@color/light_yellow" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -51,7 +50,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/barkod"
-                    android:textColor="#c1a57b"
+                    android:textColor="@color/mid_yellow"
                     android:textStyle="bold" />
 
                 <TextView
@@ -60,7 +59,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="@string/urun_isim"
-                    android:textColor="#c1a57b"
+                    android:textColor="@color/mid_yellow"
                     android:textStyle="bold" />
 
                 <TextView
@@ -69,7 +68,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="@string/urun_fiyat"
-                    android:textColor="#c1a57b"
+                    android:textColor="@color/mid_yellow"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -85,8 +84,7 @@
                     android:id="@+id/barcode_text2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="2dp"
-                    android:textColor="#ececec"
+                    android:textColor="@color/white"
                     android:textSize="14sp"
                     android:textStyle="normal" />
 
@@ -95,7 +93,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:textColor="#ECECEC"
+                    android:textColor="@color/white"
                     android:textStyle="normal" />
 
                 <TextView
@@ -103,7 +101,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:textColor="#ECECEC"
+                    android:textColor="@color/white"
                     android:textStyle="normal" />
 
             </LinearLayout>
@@ -114,7 +112,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:background="#343D4A"
+            android:background="@color/light_background"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -156,7 +154,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/toplam"
-                    android:textColor="#f2a365"
+                    android:textColor="@color/light_yellow"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -166,7 +164,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:text="0"
-                    android:textColor="#ECECEC"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="normal" />
 
@@ -176,7 +174,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_weight="1"
                     android:text="TL"
-                    android:textColor="#ECECEC"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="normal" />
 
@@ -197,7 +195,7 @@
                 android:layout_marginRight="7dp"
                 android:background="@drawable/button_delete"
                 android:text="@string/delete"
-                android:textColor="#ffffff" />
+                android:textColor="@color/btn_text" />
 
             <Button
                 android:id="@+id/bitti"
@@ -206,7 +204,7 @@
                 android:layout_marginRight="7dp"
                 android:background="@drawable/button"
                 android:text="@string/end"
-                android:textColor="#ffffff" />
+                android:textColor="@color/btn_text" />
 
         </LinearLayout>
 

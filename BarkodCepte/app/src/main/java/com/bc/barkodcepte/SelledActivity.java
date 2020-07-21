@@ -1,26 +1,32 @@
 package com.bc.barkodcepte;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class SelledActivity extends AppCompatActivity {
 
     public ArrayAdapter<String> adapter;
-    ListView lv_Selled;
-    SearchView selled_Search;
+    ListView    lv_Selled;
+    SearchView  selled_Search;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +39,46 @@ public class SelledActivity extends AppCompatActivity {
         selled_Search = findViewById(R.id.selled_Search);
 
         Listele();
+
+
+        lv_Selled.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(SelledActivity.this);
+                builder.setTitle("Uyarı!");
+                builder.setMessage("Seçtiğiniz Satış Kaydı Silinsin mi?");
+                builder.setNegativeButton("Hayır", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                builder.setPositiveButton("Evet", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        try {
+
+                            String id = adapter.getItem(position).substring(0,adapter.getItem(position).indexOf("|")).trim();
+                            Database db = new Database(SelledActivity.this);
+                            db.DeleteReceipt(id);
+                            Log.d("DEBUG","Satış Kaydı Başarıyla Silindi");
+                            Toast.makeText(getApplicationContext(),"Satış Kaydı Silindi",Toast.LENGTH_LONG).show();
+                            Listele();
+
+                        } catch (Exception e) {
+                            Log.d("DEBUG", "" + e);
+                        }
+                    }
+                });
+                builder.show();
+
+                return true;
+            }
+        });
+
+
+
     }
 
     public void Listele(){
@@ -63,7 +109,7 @@ public class SelledActivity extends AppCompatActivity {
         final Cursor c = db.rawQuery(sorgu, null);
         while (c.moveToNext()) {
            String tarih = c.getString(1);
-            adapter.add(""+tarih+"  |   "+c.getString(2)+" TL");
+            adapter.add(c.getString(0)+"  |   "+tarih+"  |   "+c.getString(2)+" TL");
 
             adapter.notifyDataSetChanged();
 
